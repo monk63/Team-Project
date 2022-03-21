@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
-class App extends StatefulWidget {
-  const ({Key? key}) : super(key: key);
+import 'pages/splash.dart';
 
-  @override
-  State<> createState() => _State();
+void main() {
+  runApp(MyApp());
 }
 
-class _State extends State<> {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
   }
 }

@@ -1,48 +1,61 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
+
+import 'login_screen.dart';
+
+// Reference : https://github.com/AminullahTajMuhammad/login_ui_design/tree/master/lib
 
 void main() {
-  runApp(new MaterialApp(
-    home: new MyApp(),
-  ));
+  runApp(SplashScreen());
 }
 
-class MyApp extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  State<StatefulWidget> createState() => StartState();
 }
 
-class _MyAppState extends State<MyApp> {
+class StartState extends State<SplashScreen> {
   @override
-  Widget build(BuildContext context) {
-    return new SplashScreen(
-      seconds: 14,
-      navigateAfterSeconds: new AfterSplash(),
-      title: new Text(
-        'Welcome In SplashScreen',
-        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-      ),
-      image: new Image.network(
-          'https://flutter.io/images/catalog-widget-placeholder.png'),
-      backgroundColor: Colors.white,
-      loaderColor: Colors.red,
-    );
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startTime();
   }
-}
 
-class AfterSplash extends StatelessWidget {
+  startTime() async {
+    var duration = Duration(seconds: 4);
+    return new Timer(duration, route);
+  }
+
+  route() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Welcome In SplashScreen Package"),
-        automaticallyImplyLeading: false,
-      ),
-      body: new Center(
-        child: new Text(
-          "Succeeded!",
-          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
-        ),
+    return initWidget(context);
+  }
+
+  Widget initWidget(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: new Color(0xffF5591F),
+                gradient: LinearGradient(
+                    colors: [(new Color(0xffF5591F)), new Color(0xffF2861E)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter)),
+          ),
+          Center(
+            child: Container(
+              child: Image.asset("assets/images/splash.png"),
+            ),
+          )
+        ],
       ),
     );
   }
