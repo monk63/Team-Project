@@ -1,4 +1,6 @@
-class  extends StatefulWidget {
+import 'package:flutter/material.dart';
+
+class App extends StatefulWidget {
   const ({Key? key}) : super(key: key);
 
   @override
