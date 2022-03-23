@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:week_9/pages/goals_screen.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -198,16 +200,25 @@ class InitState extends State<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Have Already Member?  "),
-              GestureDetector(
-                child: Text(
-                  "Login Now",
-                  style: TextStyle(color: Color(0xffF5591F)),
-                ),
-                onTap: () {
-                  // Write Tap Code Here.
-                  Navigator.pop(context);
-                },
-              )
+              ElevatedButton(
+              child: Text("Login Now"),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                  ),              
+                  onPressed:() {
+                  Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=> sec() ),
+              );
+
+              },
+            )
+                
+                 
+               
+                 
+                
+              
             ],
           ),
         )
@@ -215,3 +226,4 @@ class InitState extends State<SignUpScreen> {
     )));
   }
 }
+ 
