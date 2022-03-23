@@ -79,22 +79,22 @@ class _secState extends State<sec> {
       switch (index) {
         case 0:
           {
-            _profileTitle = 'Home';
+            _profileTitle = 'Goal';
           }
           break;
         case 1:
           {
-            _profileTitle = 'Service';
+            _profileTitle = 'Tasks';
           }
           break;
         case 2:
           {
-            _profileTitle = 'Confirm';
+            _profileTitle = 'Reminder';
           }
           break;
         case 3:
           {
-            _profileTitle = 'Profile';
+            _profileTitle = 'Share';
           }
           break;
       }
@@ -133,23 +133,23 @@ class _secState extends State<sec> {
 
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.whatshot),
-            label: 'Menu',
+            icon: Icon(Icons.sports_soccer),
+            label: 'Goals',
 
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_repair_service),
-            label: 'Service',
+            icon: Icon(Icons.task),
+            label: 'Tasks',
 
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.confirmation_num),
-            label: 'Testimony ',
+            icon: Icon(Icons.remember_me),
+            label: 'Reminder ',
 
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.public),
+            label: 'Public',
 
           ),
         ],
