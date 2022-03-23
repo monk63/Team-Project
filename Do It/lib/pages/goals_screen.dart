@@ -1,178 +1,163 @@
+import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'signup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+
+class sec extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => StartState();
+  _secState createState() => _secState();
 }
 
-class StartState extends State<LoginScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return initWidget();
+
+class _secState extends State<sec> {
+  int _selectedIndex = 0;
+  String _profileTitle="";
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static  final List<Widget> _widgetOptions = <Widget>[
+    const Text(
+      'Home',
+      style: optionStyle,
+    ),
+    const Text(
+      'Service',
+      style: optionStyle,
+    ),
+    const Text(
+      'Testimonial',
+      style: optionStyle,
+    ),
+
+    Container(
+      child: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          const CircleAvatar(
+            backgroundImage: NetworkImage(
+  'https://cdn.dribbble.com/users/3209228/screenshots/6018663/flat_profile_dribble.png'),
+            radius: 100,
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
+            child: const TextField(
+              decoration: InputDecoration(
+                  hintText: "Enter your Phone Number",
+                  labelText: "Phone Number",
+                  labelStyle: TextStyle(fontSize: 24, color: Colors.black),
+                  border: OutlineInputBorder()),
+              obscureText: false,
+              maxLines: 1),
+          ),
+              const SizedBox(height: 10,),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
+                child: const TextField(
+                decoration: InputDecoration(
+                hintText: "Enter your Address",
+                labelText: "Address",
+                labelStyle: TextStyle(fontSize: 24, color: Colors.black),
+                border: OutlineInputBorder()),
+                obscureText: false,
+                maxLines: 1,
+          ),
+              ),
+
+
+        ]),
+      ),
+    ),
+// Widget>[], Column
+
+// Container
+
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (index) {
+        case 0:
+          {
+            _profileTitle = 'Home';
+          }
+          break;
+        case 1:
+          {
+            _profileTitle = 'Service';
+          }
+          break;
+        case 2:
+          {
+            _profileTitle = 'Confirm';
+          }
+          break;
+        case 3:
+          {
+            _profileTitle = 'Profile';
+          }
+          break;
+      }
+    });
   }
 
-  initWidget() {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Column(
-      children: [
-        Container(
-          height: 300,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(90)),
-            color: new Color(0xffF5591F),
-            gradient: LinearGradient(
-              colors: [(new Color(0xffF5591F)), new Color(0xffF2861E)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-          child: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 50),
-                child: Image.asset(
-                  "assets/images/splash.png",
-                  height: 90,
-                  width: 90,
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 20, top: 20),
-                alignment: Alignment.bottomRight,
-                child: Text(
-                  "Login",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-              )
-            ],
-          )),
-        ),
-        Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(left: 20, right: 20, top: 70),
-          padding: EdgeInsets.only(left: 20, right: 20),
-          height: 54,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: Colors.grey[200],
-            boxShadow: [
-              BoxShadow(
-                  offset: Offset(0, 10),
-                  blurRadius: 50,
-                  color: Color(0xffEEEEEE)),
-            ],
-          ),
-          child: TextField(
-            cursorColor: Color(0xffF5591F),
-            decoration: InputDecoration(
-              icon: Icon(
-                Icons.email,
-                color: Color(0xffF5591F),
-              ),
-              hintText: "Enter Email",
-              enabledBorder: InputBorder.none,
-              focusedBorder: InputBorder.none,
-            ),
-          ),
-        ),
-        Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-          padding: EdgeInsets.only(left: 20, right: 20),
-          height: 54,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: Color(0xffEEEEEE),
-            boxShadow: [
-              BoxShadow(
-                  offset: Offset(0, 20),
-                  blurRadius: 100,
-                  color: Color(0xffEEEEEE)),
-            ],
-          ),
-          child: TextField(
-            cursorColor: Color(0xffF5591F),
-            decoration: InputDecoration(
-              focusColor: Color(0xffF5591F),
-              icon: Icon(
-                Icons.vpn_key,
-                color: Color(0xffF5591F),
-              ),
-              hintText: "Enter Password",
-              enabledBorder: InputBorder.none,
-              focusedBorder: InputBorder.none,
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-          alignment: Alignment.centerRight,
-          child: GestureDetector(
-            onTap: () {
-              // Write Click Listener Code Here
+      appBar: AppBar(
+        title: Text(_profileTitle)
+        ,
+        centerTitle: true,
+        actions: _selectedIndex==3?  [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=> SettingsPage() ),
+              );
             },
-            child: Text("Forget Password?"),
+          )
+        ]:[],
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+
+        type: BottomNavigationBarType.fixed,
+        iconSize: 30,
+        selectedFontSize: 15 ,
+        unselectedFontSize: 15,
+
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.whatshot),
+            label: 'Menu',
+
           ),
-        ),
-        GestureDetector(
-          onTap: () {
-            // Write Click Listener Code Here.
-          },
-          child: Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 70),
-            padding: EdgeInsets.only(left: 20, right: 20),
-            height: 54,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [(new Color(0xffF5591F)), new Color(0xffF2861E)],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight),
-              borderRadius: BorderRadius.circular(50),
-              color: Colors.grey[200],
-              boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: Color(0xffEEEEEE)),
-              ],
-            ),
-            child: Text(
-              "LOGIN",
-              style: TextStyle(color: Colors.white),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_repair_service),
+            label: 'Service',
+
           ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Don't Have Any Account?  "),
-              GestureDetector(
-                child: Text(
-                  "Register Now",
-                  style: TextStyle(color: Color(0xffF5591F)),
-                ),
-                onTap: () {
-                  // Write Tap Code Here.
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ));
-                },
-              )
-            ],
+          BottomNavigationBarItem(
+            icon: Icon(Icons.confirmation_num),
+            label: 'Testimony ',
+
           ),
-        )
-      ],
-    )));
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
+      ),
+    );
   }
+
+
 }
