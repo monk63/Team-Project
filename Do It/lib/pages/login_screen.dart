@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'goals_screen.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,6 +15,31 @@ class StartState extends State<LoginScreen> {
   }
 
   initWidget() {
+    var container = Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(left: 20, right: 20, top: 70),
+            padding: EdgeInsets.only(left: 20, right: 20),
+            height: 54,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [(new Color(0xffF5591F)), new Color(0xffF2861E)],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight),
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.grey[200],
+              boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, 10),
+                    blurRadius: 50,
+                    color: Color(0xffEEEEEE)),
+              ],
+            ),
+            child: Text(
+              "LOGIN",
+              style: TextStyle(color: Colors.white),
+            ),
+           
+        );
     return Scaffold(
         body: SingleChildScrollView(
             child: Column(
@@ -122,33 +148,16 @@ class StartState extends State<LoginScreen> {
         ),
         GestureDetector(
           onTap: () {
+              onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=> sec() ),
+              );
+            
             // Write Click Listener Code Here.
+          };
           },
-          child: Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 70),
-            padding: EdgeInsets.only(left: 20, right: 20),
-            height: 54,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [(new Color(0xffF5591F)), new Color(0xffF2861E)],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight),
-              borderRadius: BorderRadius.circular(50),
-              color: Colors.grey[200],
-              boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: Color(0xffEEEEEE)),
-              ],
-            ),
-            child: Text(
-              "LOGIN",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
+          child: container,),
         Container(
           margin: EdgeInsets.only(top: 10),
           child: Row(
