@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,27 +21,32 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+
+          //Login message
           children: [
             Text('You have logged in Successfuly'),
             SizedBox(height: 50),
             Container(
               height: 60,
               width: 150,
-              child: ElevatedButton(
-                  clipBehavior: Clip.hardEdge,
-                  child: Center(
-                    child: Text('Log out'),
-                  ),
-                  onPressed: () async {
-                    await _signOut();
-                    if (_firebaseAuth.currentUser == null) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    }
-                  }),
-            )
+
+              // //logout button
+              // child: ElevatedButton(
+              //     clipBehavior: Clip.hardEdge,
+              //     child: Center(
+              //       child: Text('Log out'),
+              //     ),
+              //     onPressed: () async {
+              //       await _signOut();
+              //       if (_firebaseAuth.currentUser == null) {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(builder: (context) => LoginScreen()),
+              //         );
+              //       }
+              //     },
+              // ),
+            ),
           ],
         ),
       ),

@@ -17,10 +17,13 @@ class _secState extends State<sec> {
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static  final List<Widget> _widgetOptions = <Widget>[
+
+
     const Text(
       'Home',
       style: optionStyle,
     ),
+
     const Text(
       'Service',
       style: optionStyle,
@@ -31,41 +34,7 @@ class _secState extends State<sec> {
     ),
 
     Container(
-      child: SingleChildScrollView(
-        child: Column(children: <Widget>[
-          const CircleAvatar(
-            backgroundImage: NetworkImage(
-  'https://cdn.dribbble.com/users/3209228/screenshots/6018663/flat_profile_dribble.png'),
-            radius: 100,
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
-            child: const TextField(
-              decoration: InputDecoration(
-                  hintText: "Enter your Phone Number",
-                  labelText: "Phone Number",
-                  labelStyle: TextStyle(fontSize: 24, color: Colors.black),
-                  border: OutlineInputBorder()),
-              obscureText: false,
-              maxLines: 1),
-          ),
-              const SizedBox(height: 10,),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
-                child: const TextField(
-                decoration: InputDecoration(
-                hintText: "Enter your Address",
-                labelText: "Address",
-                labelStyle: TextStyle(fontSize: 24, color: Colors.black),
-                border: OutlineInputBorder()),
-                obscureText: false,
-                maxLines: 1,
-          ),
-              ),
-
-
-        ]),
-      ),
+      
     ),
 // Widget>[], Column
 
@@ -101,12 +70,16 @@ class _secState extends State<sec> {
     });
   }
 
+
+
+
+//Navigation bar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_profileTitle)
-        ,
+        title: Text(_profileTitle),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         actions: _selectedIndex==3?  [
           IconButton(
