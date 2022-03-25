@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'pages/Login_Screen.dart';
 import 'pages/splash.dart';
 
 Future<void> main() async {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+     // home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }
