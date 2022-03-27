@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
+import '../Component/google_sign_in.dart';
 
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -12,7 +13,12 @@ _signOut() async {
 
 class SettingsPage extends StatelessWidget{
   @override
-  Widget build(BuildContext context) =>  Scaffold(
+  Widget build(BuildContext context) {
+  
+    final user = FirebaseAuth.instance.currentUser!;
+  
+  
+  return Scaffold(
     appBar: AppBar(
       title: Text('Settings')
   ),
@@ -50,4 +56,5 @@ body: Center(
       ),
   
   );
+  }
 }
