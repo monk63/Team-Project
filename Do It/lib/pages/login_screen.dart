@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../Component/button.dart';
 import '../constants.dart';
-import 'goals_screen.dart';
+import 'main_screen.dart';
 import 'home_screen.dart';
 import 'signup_screen.dart';
 class LoginScreen extends StatefulWidget {

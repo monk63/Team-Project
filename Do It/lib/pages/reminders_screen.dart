@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 
 
-class GoalsPage extends StatelessWidget {
-  const GoalsPage({ Key? key }) : super(key: key);
+class RemindersPage extends StatelessWidget {
+  const RemindersPage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
