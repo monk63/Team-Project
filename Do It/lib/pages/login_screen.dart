@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import '../Component/button.dart';
 import '../constants.dart';
 import 'main_screen.dart';
 import 'home_screen.dart';
 import 'signup_screen.dart';
+import '../Component/google_sign_in.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -19,8 +23,14 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isloading = false;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+  //=>
     
+    // ChangeNotifierProvider(
+    //   create: (context) => GoogleSignInProvider(),
+    // child: Scaffold(
+
+
     return Scaffold(
       body: isloading
           ? Center(
@@ -150,6 +160,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               },
                             ),
+                          //Google sign in
+
+                          ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 34, 117, 185),
+                            onPrimary: Color.fromARGB(255, 238, 232, 232),
+                            maximumSize: Size(double.infinity,50),
+                            ),
+                            icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
+                            label: Text('Sign Up with Google'),
+                            onPressed: () {
+                              final provider = Provider.of
+                              <GoogleSignInProvider>(context, listen: false);
+                              provider.googleLogin();
+                            },
+
+                          ),
+
+
+
+                        
                             SizedBox(height: 30),
                             GestureDetector(
                               onTap: () {
@@ -188,6 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+   //),
     );
     
   }

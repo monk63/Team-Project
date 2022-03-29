@@ -30,22 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 60,
               width: 150,
 
-              // //logout button
-              // child: ElevatedButton(
-              //     clipBehavior: Clip.hardEdge,
-              //     child: Center(
-              //       child: Text('Log out'),
-              //     ),
-              //     onPressed: () async {
-              //       await _signOut();
-              //       if (_firebaseAuth.currentUser == null) {
-              //         Navigator.push(
-              //           context,
-              //           MaterialPageRoute(builder: (context) => LoginScreen()),
-              //         );
-              //       }
-              //     },
-              // ),
+          
             ),
           ],
         ),
