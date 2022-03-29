@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, unnecessary_import, unused_import
+
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +18,14 @@ class sec extends StatefulWidget {
 
 
 class _secState extends State<sec> {
-  int _selectedIndex = 0;
-  String _profileTitle="";
+  final int _selectedIndex = 0;
+  final String _profileTitle="";
   
   List pages = [
-    GoalsPage(),
-    TasksPage(),
-    RemindersPage(),
-    PublicPage(),
+    const GoalsPage(),
+    const TasksPage(),
+    const RemindersPage(),
+    const PublicPage(),
     
   ];
   int currentIndex=0;
