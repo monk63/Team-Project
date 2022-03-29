@@ -5,6 +5,7 @@ import 'package:week_9/pages/goals_screen.dart';
 import 'package:week_9/pages/reminders_screen.dart';
 import 'package:week_9/pages/settings_page.dart';
 import 'package:week_9/pages/tasks_screen.dart';
+import 'package:week_9/pages/public_screen.dart';
 
 
 
