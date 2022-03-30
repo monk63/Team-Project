@@ -23,14 +23,18 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isloading = false;
 
   @override
-  Widget build(BuildContext context)  {
-  //=>
-    
-    // ChangeNotifierProvider(
-    //   create: (context) => GoogleSignInProvider(),
-    // child: Scaffold(
-
-
+  Widget build(BuildContext context)  => Scaffold(
+ 
+body: StreamBuilder (
+  stream: FirebaseAuth.instance.authStateChanges(),
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting){
+    return Center(child: CircularProgressIndicator());
+  } else if (snapshot.hasData) {
+    return sec();
+  } else if (snapshot.hasError){
+    return Center(child: Text('Something is wrong!'));
+  } else {
     return Scaffold(
       body: isloading
           ? Center(
@@ -127,11 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     await _auth.signInWithEmailAndPassword(
                                         email: email, password: password);
 
-                                    await Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (contex) => sec(),
-                                      ),
-                                    );
+                                   
 
                                     setState(() {
                                       isloading = false;
@@ -219,8 +219,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-   //),
-    );
-    
-  }
+          );
+        
+      }
+  },
+    ),
+  );  
 }
+
