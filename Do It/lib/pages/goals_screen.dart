@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:week_9/pages/settings_page.dart';
 
 
 class GoalsPage extends StatefulWidget {
@@ -12,8 +12,15 @@ class GoalsPage extends StatefulWidget {
 
 class _GoalsPageState extends State<GoalsPage> {
   @override
-  Widget build(BuildContext context) {
-    return MaterialButton( 
+   Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(
+  title: Text('Goals'),
+  automaticallyImplyLeading: false,
+
+  ),
+
+    
+    body: MaterialButton( 
         height: 40.0, 
         minWidth: 400.0, 
       color: Theme.of(context).primaryColor, 
@@ -21,7 +28,9 @@ class _GoalsPageState extends State<GoalsPage> {
       child: new Text("Create New Goal"), 
       onPressed: () => {}, 
       splashColor: Colors.redAccent,
-    );
+    ));
     
   }
 }
+
+

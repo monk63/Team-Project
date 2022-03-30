@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:week_9/pages/settings_page.dart';
 
 
 
@@ -14,8 +15,22 @@ class _PublicPageState extends State<PublicPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
-        title: const Text('Public'),
-         automaticallyImplyLeading: false,
-    ),);
+  title: Text('Public'),
+  automaticallyImplyLeading: false,
+  actions: <Widget>[
+    IconButton(
+      icon: Icon(
+        Icons.settings,
+        color: Colors.white,
+      ),
+      onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=> SettingsPage() ),
+              );
+            },
+    )
+  ],
+));
 }
 }

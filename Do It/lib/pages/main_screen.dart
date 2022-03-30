@@ -42,21 +42,7 @@ class _secState extends State<sec> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-        title: const Text('Goals'),
-         automaticallyImplyLeading: false,
-        centerTitle: true,
-        actions: currentIndex==4?  [
-        IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context)=> SettingsPage() ),
-              );
-            },
-          )        
-        ]:[]),
+    return Scaffold(
       
       body: pages[currentIndex],
         
