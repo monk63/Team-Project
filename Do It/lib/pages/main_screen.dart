@@ -16,10 +16,11 @@ class sec extends StatefulWidget {
   _secState createState() => _secState();
 }
 
+///k,nksn 
+
 
 class _secState extends State<sec> {
-  final int _selectedIndex = 0;
-  final String _profileTitle="";
+ 
   
   List pages = [
     const GoalsPage(),
@@ -33,21 +34,20 @@ class _secState extends State<sec> {
      setState(() {
        currentIndex =index;
      });
-     
-
    }
 
 
 //Navigation bar
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_profileTitle),
-        automaticallyImplyLeading: false,
+    return Scaffold(appBar: AppBar(
+        title: const Text('Goals'),
+         automaticallyImplyLeading: false,
         centerTitle: true,
-        actions: _selectedIndex==3?  [
-          IconButton(
+        actions: currentIndex==4?  [
+        IconButton(
             icon: const Icon(Icons.settings),
             onPressed: (){
               Navigator.push(
@@ -55,12 +55,14 @@ class _secState extends State<sec> {
                 MaterialPageRoute(builder: (context)=> SettingsPage() ),
               );
             },
-          )
-        ]:[],
-      ),
+          )        
+        ]:[]),
+      
       body: pages[currentIndex],
         
       bottomNavigationBar: BottomNavigationBar(
+        onTap: onTap,
+        currentIndex: currentIndex,
 
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
@@ -69,7 +71,7 @@ class _secState extends State<sec> {
         elevation: 0,
         showUnselectedLabels: false,
 
-        items: const <BottomNavigationBarItem>[
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.sports_soccer),
             label: 'Goals',
