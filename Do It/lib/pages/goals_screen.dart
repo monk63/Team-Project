@@ -26,7 +26,14 @@ class _GoalsPageState extends State<GoalsPage> {
       color: Theme.of(context).primaryColor, 
       textColor: Colors.white, 
       child: new Text("Create New Goal"), 
-      onPressed: () => {}, 
+      onPressed: () => {
+        Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=> SettingsPage() ),
+              ) 
+
+
+      }, 
       splashColor: Colors.redAccent,
     ));
     
