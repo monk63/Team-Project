@@ -16,10 +16,17 @@
 //   _secState createState() => _secState();
 // }
 
+///k,nksn 
 
+
+<<<<<<< HEAD
 // class _secState extends State<sec> {
 //   final int _selectedIndex = 0;
 //   final String _profileTitle="";
+=======
+class _secState extends State<sec> {
+ 
+>>>>>>> 887449487e4d74f1981cef8c4c4f74ac83113e0e
   
 //   List pages = [
 //     const GoalsPage(),
@@ -27,6 +34,7 @@
 //     const RemindersPage(),
 //     const PublicPage(),
     
+<<<<<<< HEAD
 //   ];
 //   int currentIndex=0;
 //    void onTap(int index){
@@ -61,6 +69,29 @@
 //       body: pages[currentIndex],
         
 //       bottomNavigationBar: BottomNavigationBar(
+=======
+  ];
+  int currentIndex=0;
+   void onTap(int index){
+     setState(() {
+       currentIndex =index;
+     });
+   }
+
+
+//Navigation bar
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+      body: pages[currentIndex],
+        
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTap,
+        currentIndex: currentIndex,
+>>>>>>> 887449487e4d74f1981cef8c4c4f74ac83113e0e
 
 //         type: BottomNavigationBarType.fixed,
 //         iconSize: 30,
@@ -69,10 +100,17 @@
 //         elevation: 0,
 //         showUnselectedLabels: false,
 
+<<<<<<< HEAD
 //         items: const <BottomNavigationBarItem>[
 //           BottomNavigationBarItem(
 //             icon: Icon(Icons.sports_soccer),
 //             label: 'Goals',
+=======
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_soccer),
+            label: 'Goals',
+>>>>>>> 887449487e4d74f1981cef8c4c4f74ac83113e0e
 
 //           ),
 //           BottomNavigationBarItem(
