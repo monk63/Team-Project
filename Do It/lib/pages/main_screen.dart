@@ -16,8 +16,7 @@ class sec extends StatefulWidget {
 
  
 class _secState extends State<sec> {
-  final int _selectedIndex = 0;
-  final String _profileTitle="";
+ 
   
   List pages = [
     const GoalsPage(),
@@ -41,20 +40,10 @@ class _secState extends State<sec> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_profileTitle),
+        
         automaticallyImplyLeading: false,
-        centerTitle: true,
-        actions: _selectedIndex==3?  [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context)=> SettingsPage() ),
-              );
-            },
-          )
-        ]:[],
+       
+        
       ),
       body: pages[currentIndex],
       
