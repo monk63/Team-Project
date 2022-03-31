@@ -1,9 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:week_9/pages/settings_page.dart';
-
-import 'new_goal_page.dart';
-
+import 'package:week_9/pages/new_goal_page.dart';
 
 class GoalsPage extends StatefulWidget {
   const GoalsPage({ Key? key }) : super(key: key);

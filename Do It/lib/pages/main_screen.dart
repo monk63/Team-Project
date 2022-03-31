@@ -39,12 +39,7 @@ class _secState extends State<sec> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        
-        
-       
-        
-      ),
+      
       body: pages[currentIndex],
       
         
