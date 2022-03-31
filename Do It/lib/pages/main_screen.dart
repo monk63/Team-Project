@@ -41,7 +41,7 @@ class _secState extends State<sec> {
     return Scaffold(
       appBar: AppBar(
         
-        automaticallyImplyLeading: false,
+        
        
         
       ),
