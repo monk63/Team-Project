@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:week_9/pages/goals_screen.dart';
 import '../Component/button.dart';
 import '../constants.dart';
 import 'main_screen.dart';
@@ -31,7 +32,7 @@ body: StreamBuilder (
     if (snapshot.connectionState == ConnectionState.waiting){
     return Center(child: CircularProgressIndicator());
   } else if (snapshot.hasData) {
-    return sec();
+    return GoalsPage();
   } else if (snapshot.hasError){
     return Center(child: Text('Something is wrong!'));
   } else {
