@@ -17,8 +17,11 @@ class _NewGoalPageState extends State<NewGoalPage> {
   title: Text('New Goal'),
   automaticallyImplyLeading: false,
 
-  ),
+   ),
+    );
 
-body: 
-  }
+// body: 
+//   }
+
+}
 }

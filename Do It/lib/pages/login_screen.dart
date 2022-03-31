@@ -10,6 +10,7 @@ import 'main_screen.dart';
 import 'home_screen.dart';
 import 'signup_screen.dart';
 import '../Component/google_sign_in.dart';
+import 'package:week_9/pages/main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ body: StreamBuilder (
     if (snapshot.connectionState == ConnectionState.waiting){
     return Center(child: CircularProgressIndicator());
   } else if (snapshot.hasData) {
-    return GoalsPage();
+    return sec();
   } else if (snapshot.hasError){
     return Center(child: Text('Something is wrong!'));
   } else {
