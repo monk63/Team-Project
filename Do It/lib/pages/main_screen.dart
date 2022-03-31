@@ -6,7 +6,7 @@ import 'package:week_9/pages/reminders_screen.dart';
 import 'package:week_9/pages/settings_page.dart';
 import 'package:week_9/pages/tasks_screen.dart';
 import 'package:week_9/pages/public_screen.dart';
-
+import 'package:week_9/pages/new_goal_page.dart';
 
 
 class sec extends StatefulWidget {
@@ -39,12 +39,12 @@ class _secState extends State<sec> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       body: pages[currentIndex],
       
-        
       bottomNavigationBar: BottomNavigationBar(
-
+      onTap: onTap,
+      currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
         selectedFontSize: 0 ,
