@@ -20,8 +20,7 @@ class _NewGoalPageState extends State<NewGoalPage> {
    ),
     );
 
-// body: 
-//   }
+
 
 }
 }
