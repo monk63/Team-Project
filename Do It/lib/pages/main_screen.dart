@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, unnecessary_import, unused_import
+
 
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
@@ -16,11 +16,12 @@ class sec extends StatefulWidget {
   _secState createState() => _secState();
 }
 
-///k,nksn 
+ 
 
 
 class _secState extends State<sec> {
- 
+  final int _selectedIndex = 0;
+  final String _profileTitle="";
   
   List pages = [
     const GoalsPage(),
@@ -34,23 +35,35 @@ class _secState extends State<sec> {
      setState(() {
        currentIndex =index;
      });
+     
+
    }
 
 
 //Navigation bar
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color(0xff00BCD1),
-      
+      appBar: AppBar(
+        title: Text(_profileTitle),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        actions: _selectedIndex==3?  [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=> SettingsPage() ),
+              );
+            },
+          )
+        ]:[],
+      ),
       body: pages[currentIndex],
       
         
       bottomNavigationBar: BottomNavigationBar(
-        onTap: onTap,
-        currentIndex: currentIndex,
 
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
@@ -59,7 +72,7 @@ class _secState extends State<sec> {
         elevation: 0,
         showUnselectedLabels: false,
 
-        items: const [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.sports_soccer),
             label: 'Goals',
