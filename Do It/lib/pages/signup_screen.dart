@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../Component/button.dart';
 import '../constants.dart';
-import 'Login_Screen.dart';
+import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
