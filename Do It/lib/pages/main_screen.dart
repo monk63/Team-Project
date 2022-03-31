@@ -12,13 +12,9 @@ import 'package:week_9/pages/public_screen.dart';
 class sec extends StatefulWidget {
   @override
   _secState createState() => _secState();
-
-  
 }
 
  
-
-
 class _secState extends State<sec> {
   final int _selectedIndex = 0;
   final String _profileTitle="";
