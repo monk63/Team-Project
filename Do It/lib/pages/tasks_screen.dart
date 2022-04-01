@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'add_task.dart';
 import 'description.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,7 +25,7 @@ class _TasksPageState extends State<TasksPage> {
 
   getuid() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    final FirebaseUser user = await auth.currentUser();
+    final User user = auth.currentUser!;
     setState(() {
       uid = user.uid;
     },);
@@ -48,9 +49,9 @@ class _TasksPageState extends State<TasksPage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: StreamBuilder(
-          stream: Firestore.instance
+          stream: FirebaseFirestore.instance
               .collection('tasks')
-              .document(uid)
+              .doc(uid)
               .collection('mytasks')
               .snapshots(),
           builder: (context, snapshot) {
@@ -59,7 +60,7 @@ class _TasksPageState extends State<TasksPage> {
                 child: CircularProgressIndicator(),
               );
             } else {
-              final docs = snapshot.data.documents;
+              final docs = snapshot.data as List<dynamic>;
 
               return ListView.builder(
                 itemCount: docs.length,
@@ -102,17 +103,18 @@ class _TasksPageState extends State<TasksPage> {
                                     child: Text(
                                         DateFormat.yMd().add_jm().format(time)))
                               ]),
-                          Container(
+                          Container( 
                               child: IconButton(
                                   icon: Icon(
                                     Icons.delete,
                                   ),
                                   onPressed: () async {
-                                    await Firestore.instance
+                                    FirebaseFirestore firestore = FirebaseFirestore.instance;
+                                    await firestore
                                         .collection('tasks')
-                                        .document(uid)
+                                        .doc(uid)
                                         .collection('mytasks')
-                                        .document(docs[index]['time'])
+                                        .doc(docs[index]['time'])
                                         .delete();
                                   },
                                   ),

@@ -17,19 +17,18 @@ class _addTaskState extends State<addTask> {
 
   addtasktofirebase() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    final FirebaseUser user = await auth.currentUser();
-    String uid = user.uid;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    String uid = auth.currentUser!.uid;
     var time = DateTime.now();
-    await Firestore.instance
+    await firestore
         .collection('tasks')
-        .document(uid)
+        .doc(uid)
         .collection('mytasks')
-        .document(time.toString())
-        .setData({
+        .doc(time.toString())
+        .set({
       'title': titleController.text,
       'description': descriptionController.text,
-      'time': time.toString(),
-      'timestamp': time
+      'time': time.toIso8601String(),
     });
     Fluttertoast.showToast(msg: 'Data Added');
   }

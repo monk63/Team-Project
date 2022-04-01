@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Description extends StatelessWidget {
   final String title, description;
 
-  const Description({Key key, this.title, this.description}) : super(key: key);
+  const Description({Key? key,required this.title, required this.description}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
