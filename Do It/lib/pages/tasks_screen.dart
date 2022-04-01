@@ -48,7 +48,7 @@ class _TasksPageState extends State<TasksPage> {
         padding: EdgeInsets.all(10),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: StreamBuilder(
+        child: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection('tasks')
               .doc(uid)
@@ -60,12 +60,14 @@ class _TasksPageState extends State<TasksPage> {
                 child: CircularProgressIndicator(),
               );
             } else {
-              final docs = snapshot.data as List<dynamic>;
+
+               List<DocumentSnapshot> docs = snapshot.hasData ? snapshot.data!.docs: [];
 
               return ListView.builder(
                 itemCount: docs.length,
                 itemBuilder: (context, index) {
-                  var time = (docs[index]['timestamp'] as Timestamp).toDate();
+                  Map<String,dynamic> data = docs.elementAt(index).data() as Map<String,dynamic>;
+                  var time = DateTime.parse(data["time"]);
 
                   return InkWell(
                     onTap: () {
@@ -80,7 +82,7 @@ class _TasksPageState extends State<TasksPage> {
                     child: Container(
                       margin: EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
-                          color: Color(0xff121211),
+                          color: Color.fromARGB(255, 43, 85, 163),
                           borderRadius: BorderRadius.circular(10)),
                       height: 90,
                       child: Row(
@@ -110,12 +112,11 @@ class _TasksPageState extends State<TasksPage> {
                                   ),
                                   onPressed: () async {
                                     FirebaseFirestore firestore = FirebaseFirestore.instance;
-                                    await firestore
-                                        .collection('tasks')
-                                        .doc(uid)
-                                        .collection('mytasks')
-                                        .doc(docs[index]['time'])
-                                        .delete();
+                                    
+                                    
+                                    await docs[index].reference.delete();
+                                        setState((){});
+                                        
                                   },
                                   ),
                                   ),

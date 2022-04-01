@@ -24,7 +24,7 @@ class _addTaskState extends State<addTask> {
         .collection('tasks')
         .doc(uid)
         .collection('mytasks')
-        .doc(time.toString())
+        .doc(time.toIso8601String())
         .set({
       'title': titleController.text,
       'description': descriptionController.text,
@@ -79,6 +79,7 @@ class _addTaskState extends State<addTask> {
                     ),
                     onPressed: () {
                       addtasktofirebase();
+                      Navigator.pop(context);
                     },
                   ))
             ],
