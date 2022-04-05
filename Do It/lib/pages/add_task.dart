@@ -72,7 +72,9 @@ class _addTaskState extends State<addTask> {
                       if (states.contains(MaterialState.pressed))
                         return Colors.purple.shade100;
                       return Theme.of(context).primaryColor;
-                    })),
+                      },
+                    ),
+                  ),
                     child: Text(
                       'Add Task',
                       style: GoogleFonts.roboto(fontSize: 18),
@@ -81,11 +83,11 @@ class _addTaskState extends State<addTask> {
                       addtasktofirebase();
                       Navigator.pop(context);
                     },
-                  ))
+                  ),
+                ),
             ],
-          )),
-
-
+          ),
+        ),
     );
   }
 }

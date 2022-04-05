@@ -44,6 +44,14 @@ dependencies:
   cloud_firestore: ^3.1.11
   intl: ^0.17.0
   flutter_launcher_icons: ^0.9.2
+  flutter_local_notifications: ^9.4.0
+  flutter_app_name: ^0.1.1
+  firebase_messaging: ^11.2.12
+
+flutter_app_name:
+  name: "Do It"
+
+  
 
 flutter_icons:
   image_path: "assets/images/splash.png"
