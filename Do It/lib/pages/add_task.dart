@@ -20,7 +20,6 @@ class _addTaskState extends State<addTask> {
   addtasktofirebase() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
     String uid = auth.currentUser!.uid;
     var time = DateTime.now();
     await firestore
@@ -43,16 +42,10 @@ class _addTaskState extends State<addTask> {
         backgroundColor: Color.fromARGB(255, 44, 31, 167),
         textColor: Colors.white,
         fontSize: 16.0
-    );
+    );    
+  }  
 
-
-
-    
-  }
-  
-
-  @override
-  
+  @override  
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
