@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class addTask extends StatefulWidget {
@@ -18,6 +20,7 @@ class _addTaskState extends State<addTask> {
   addtasktofirebase() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
     String uid = auth.currentUser!.uid;
     var time = DateTime.now();
     await firestore
@@ -30,10 +33,26 @@ class _addTaskState extends State<addTask> {
       'description': descriptionController.text,
       'time': time.toIso8601String(),
     });
-    Fluttertoast.showToast(msg: 'Data Added');
+    //Notification
+    //Fluttertoast.showToast(msg: 'Task Created');
+    Fluttertoast.showToast(
+        msg: "Task Has Been Created",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Color.fromARGB(255, 44, 31, 167),
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+
+
+
+    
   }
+  
 
   @override
+  
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
