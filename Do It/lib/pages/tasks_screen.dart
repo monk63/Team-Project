@@ -36,13 +36,13 @@ class _TasksPageState extends State<TasksPage> {
       return Scaffold(appBar: AppBar(
       title: Text('Tasks'),
     automaticallyImplyLeading: false,
-     actions: [
-          IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-              }),
-        ],
+    //  actions: [
+    //       IconButton(
+    //           icon: Icon(Icons.logout),
+    //           onPressed: () async {
+    //             await FirebaseAuth.instance.signOut();
+    //           }),
+    //     ],
    ),
  body: Container(
         padding: EdgeInsets.all(10),
@@ -77,7 +77,9 @@ class _TasksPageState extends State<TasksPage> {
                               builder: (context) => Description(
                                     title: docs[index]['title'],
                                     description: docs[index]['description'],
-                                  ),),);
+                                  ),
+                              ),
+                            );
                     },
                     child: Container(
                       margin: EdgeInsets.only(bottom: 10),
@@ -104,7 +106,28 @@ class _TasksPageState extends State<TasksPage> {
                                     margin: EdgeInsets.only(left: 20),
                                     child: Text(
                                         DateFormat.yMd().add_jm().format(time)))
-                              ]),
+                              ],
+                              ),
+                              
+                              //Edit Task
+                              Container(
+                                    child: IconButton(
+                                  icon: Icon(
+                                    Icons.edit,
+                                  ),onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Description(
+                                    title: docs[index]['title'],
+                                    description: docs[index]['description'],
+                                  ), 
+                                  ),
+                                  );
+              },
+                             
+                                  ),
+
+                              ),
+                              //Delete Task
                           Container( 
                               child: IconButton(
                                   icon: Icon(
