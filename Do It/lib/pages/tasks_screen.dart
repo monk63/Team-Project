@@ -110,23 +110,27 @@ class _TasksPageState extends State<TasksPage> {
                               ),
                               
                               //Edit Task
-                              Container(
-                                    child: IconButton(
+                            Container( 
+                              child: IconButton(
                                   icon: Icon(
                                     Icons.edit,
-                                  ),onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Description(
+                                  ),
+                                  onPressed: () async {
+                                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => addTask(
                                     title: docs[index]['title'],
                                     description: docs[index]['description'],
-                                  ), 
+                                    time:docs[index]['time'],
+                                    
                                   ),
-                                  );
-              },
-                             
-                                  ),
-
                               ),
+                                     );setState((){});                                        
+                                  },
+                                  ),
+                                  ),                          
+                                                            
                               //Delete Task
                           Container( 
                               child: IconButton(
@@ -134,9 +138,7 @@ class _TasksPageState extends State<TasksPage> {
                                     Icons.delete,
                                   ),
                                   onPressed: () async {
-                                    FirebaseFirestore firestore = FirebaseFirestore.instance;
-                                    
-                                    
+                                  //  FirebaseFirestore firestore = FirebaseFirestore.instance;
                                     await docs[index].reference.delete();
                                         setState((){});
                                         

@@ -8,14 +8,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class addTask extends StatefulWidget {
- // const addTask({ Key? key }) : super(key: key);
+  String? title;
+  String? description;
+  String? time;
+addTask({ Key? key, this.title, this.description, this.time }) : super(key: key);
   @override
   State<addTask> createState() => _addTaskState();
 }
 
+
 class _addTaskState extends State<addTask> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
+  
 
   addtasktofirebase() async {
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -44,6 +50,43 @@ class _addTaskState extends State<addTask> {
         fontSize: 16.0
     );    
   }  
+
+  editTask() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    String uid = auth.currentUser!.uid;
+    var time = DateTime.now();
+    await firestore
+        .collection('tasks')
+        .doc(uid)
+        .collection('mytasks')
+        .doc(widget.time)
+        .update({
+      'title': titleController.text,
+      'description': descriptionController.text,
+    });
+    //Notification
+    //Fluttertoast.showToast(msg: 'Task Created');
+    Fluttertoast.showToast(
+        msg: "Task Has Been Edited",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Color.fromARGB(255, 44, 31, 167),
+        textColor: Colors.white,
+        fontSize: 16.0
+    );    
+  }  
+
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.title != null && widget.description != null){
+      titleController.text = widget.title!;
+      descriptionController.text = widget.description!;
+    }
+  }
 
   @override  
     Widget build(BuildContext context) {
@@ -92,7 +135,11 @@ class _addTaskState extends State<addTask> {
                       style: GoogleFonts.roboto(fontSize: 18),
                     ),
                     onPressed: () {
-                      addtasktofirebase();
+                      if (widget.title != null && widget.description != null){
+                      editTask();
+                      } else {
+                        addtasktofirebase();
+                      }
                       Navigator.pop(context);
                     },
                   ),

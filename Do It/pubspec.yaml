@@ -47,6 +47,7 @@ dependencies:
   flutter_local_notifications: ^9.4.0
   flutter_app_name: ^0.1.1
   firebase_messaging: ^11.2.12
+  notifications: ^2.0.1
 
 flutter_app_name:
   name: "Do It"
