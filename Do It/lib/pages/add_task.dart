@@ -39,8 +39,7 @@ class _addTaskState extends State<addTask> {
       'description': descriptionController.text,
       'time': time.toIso8601String(),
     });
- 
-    Fluttertoast.showToast(
+     Fluttertoast.showToast(
         msg: "Task Has Been Created",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
@@ -50,7 +49,6 @@ class _addTaskState extends State<addTask> {
         fontSize: 16.0
     );    
   }  
-
   editTask() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -77,8 +75,6 @@ class _addTaskState extends State<addTask> {
         fontSize: 16.0
     );    
   }  
-
-
   @override
   void initState() {
     super.initState();
@@ -87,9 +83,21 @@ class _addTaskState extends State<addTask> {
       descriptionController.text = widget.description!;
     }
   }
-
   @override  
     Widget build(BuildContext context) {
+      AwesomeNotifications().initialize(
+      'resource://drawable/splash',
+      [
+        NotificationChannel(
+          channelKey: 'basic_channel',
+          channelName: 'Basic Notifications',
+          defaultColor: Color.fromARGB(255, 202, 112, 9),
+          importance: NotificationImportance.High,
+          channelShowBadge: true,
+          channelDescription: '',
+        ),
+      ],
+    );
       return Scaffold(
         appBar: AppBar(
       title: Text('New Task'),
@@ -134,12 +142,19 @@ class _addTaskState extends State<addTask> {
                       'Add Task',
                       style: GoogleFonts.roboto(fontSize: 18),
                     ),
-                    onPressed: () {
+                    onPressed: ()async {
                       if (widget.title != null && widget.description != null){
                         
                       editTask();
                       } else {
+
                         addtasktofirebase();
+                        await AwesomeNotifications().createNotification(
+            content: NotificationContent(
+                id: 10,
+                channelKey: 'basic_channel',
+                title: 'Do It',
+                body: 'Your task has been created successfully'));
                         
                       }
                       Navigator.pop(context);
