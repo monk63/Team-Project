@@ -1,5 +1,9 @@
 
+import 'dart:io';
+
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:week_9/pages/add_task.dart';
 import 'package:week_9/pages/new_goal_page.dart';
 
 class GoalsPage extends StatefulWidget {
@@ -10,6 +14,7 @@ class GoalsPage extends StatefulWidget {
 }
 
 class _GoalsPageState extends State<GoalsPage> {
+
   @override
    Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
@@ -17,8 +22,7 @@ class _GoalsPageState extends State<GoalsPage> {
   automaticallyImplyLeading: false,
 
   ),
-
-    
+   
     body: MaterialButton( 
         height: 40.0, 
         minWidth: 400.0, 
@@ -30,10 +34,8 @@ class _GoalsPageState extends State<GoalsPage> {
                 context,
                 MaterialPageRoute(builder: (context)=>NewGoalPage() ),
               ) 
-
-
       }, 
-      splashColor: Colors.redAccent,
+      splashColor: Color.fromARGB(255, 50, 21, 153),
     ));
     
   }

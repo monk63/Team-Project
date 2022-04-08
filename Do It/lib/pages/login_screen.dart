@@ -7,7 +7,7 @@ import 'package:week_9/pages/goals_screen.dart';
 import '../Component/button.dart';
 import '../constants.dart';
 import 'main_screen.dart';
-import 'home_screen.dart';
+
 import 'signup_screen.dart';
 import '../Component/google_sign_in.dart';
 import 'package:week_9/pages/main_screen.dart';

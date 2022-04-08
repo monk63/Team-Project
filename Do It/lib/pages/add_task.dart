@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 class addTask extends StatefulWidget {
   String? title;
@@ -38,8 +39,7 @@ class _addTaskState extends State<addTask> {
       'description': descriptionController.text,
       'time': time.toIso8601String(),
     });
-    //Notification
-    //Fluttertoast.showToast(msg: 'Task Created');
+ 
     Fluttertoast.showToast(
         msg: "Task Has Been Created",
         toastLength: Toast.LENGTH_SHORT,
@@ -136,9 +136,11 @@ class _addTaskState extends State<addTask> {
                     ),
                     onPressed: () {
                       if (widget.title != null && widget.description != null){
+                        
                       editTask();
                       } else {
                         addtasktofirebase();
+                        
                       }
                       Navigator.pop(context);
                     },
