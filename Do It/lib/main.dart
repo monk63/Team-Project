@@ -49,7 +49,8 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   // This widget is the root of the application.
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
+  Widget build(BuildContext context) => 
+  ChangeNotifierProvider(
      create: (context) => GoogleSignInProvider(),
      child:  MaterialApp(
        debugShowCheckedModeBanner: false,
