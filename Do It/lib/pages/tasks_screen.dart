@@ -111,10 +111,12 @@ class _TasksPageState extends State<TasksPage> {
                               
                               //Edit Task
                             Container( 
-                              child: IconButton(
+                              child: Padding  (padding: const EdgeInsets.only(
+                          left: 120, bottom: 0, right: 0, top: 0),
+                          child: IconButton(
                                   icon: Icon(
                                     Icons.edit,
-                                  ),
+                              ),
                                   onPressed: () async {
                                      Navigator.push(
                           context,
@@ -128,11 +130,13 @@ class _TasksPageState extends State<TasksPage> {
                               ),
                                      );setState((){});                                        
                                   },
-                                  ),
+                              )),
                                   ),                          
                                                             
                               //Delete Task
                           Container( 
+                            child: Padding  (padding: const EdgeInsets.only(
+                          left: 0, bottom: 0, right: 0, top: 0),
                               child: IconButton(
                                   icon: Icon(
                                     Icons.delete,
@@ -144,7 +148,7 @@ class _TasksPageState extends State<TasksPage> {
                                         
                                   },
                                   ),
-                                  ),
+                          )),
                         ],
                       ),
                     ),
