@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 
 class LoginSignupButton extends StatelessWidget {
   final String title;
@@ -19,11 +20,12 @@ class LoginSignupButton extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20,color: Colors.red,),
+              
             ),
           ),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.black45),
+            backgroundColor: MaterialStateProperty.all(Color.fromARGB(115, 30, 16, 223)),
           ),
         ),
       ),
