@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TasksPage extends StatefulWidget {
-  const TasksPage({ Key? key }) : super(key: key);
+  const TasksPage({Key? key}) : super(key: key);
 
   @override
   State<TasksPage> createState() => _TasksPageState();
@@ -26,25 +26,28 @@ class _TasksPageState extends State<TasksPage> {
   getuid() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     final User user = auth.currentUser!;
-    setState(() {
-      uid = user.uid;
-    },);
+    setState(
+      () {
+        uid = user.uid;
+      },
+    );
   }
 
   @override
-    Widget build(BuildContext context) {
-      return Scaffold(appBar: AppBar(
-      title: Text('Tasks'),
-    automaticallyImplyLeading: false,
-    //  actions: [
-    //       IconButton(
-    //           icon: Icon(Icons.logout),
-    //           onPressed: () async {
-    //             await FirebaseAuth.instance.signOut();
-    //           }),
-    //     ],
-   ),
- body: Container(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tasks'),
+        automaticallyImplyLeading: false,
+        //  actions: [
+        //       IconButton(
+        //           icon: Icon(Icons.logout),
+        //           onPressed: () async {
+        //             await FirebaseAuth.instance.signOut();
+        //           }),
+        //     ],
+      ),
+      body: Container(
         padding: EdgeInsets.all(10),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -60,26 +63,28 @@ class _TasksPageState extends State<TasksPage> {
                 child: CircularProgressIndicator(),
               );
             } else {
-
-               List<DocumentSnapshot> docs = snapshot.hasData ? snapshot.data!.docs: [];
+              List<DocumentSnapshot> docs =
+                  snapshot.hasData ? snapshot.data!.docs : [];
 
               return ListView.builder(
+                shrinkWrap: true,
                 itemCount: docs.length,
                 itemBuilder: (context, index) {
-                  Map<String,dynamic> data = docs.elementAt(index).data() as Map<String,dynamic>;
+                  Map<String, dynamic> data =
+                      docs.elementAt(index).data() as Map<String, dynamic>;
                   var time = DateTime.parse(data["time"]);
 
                   return InkWell(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Description(
-                                    title: docs[index]['title'],
-                                    description: docs[index]['description'],
-                                  ),
-                              ),
-                            );
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Description(
+                            title: docs[index]['title'],
+                            description: docs[index]['description'],
+                          ),
+                        ),
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.only(bottom: 10),
@@ -91,64 +96,66 @@ class _TasksPageState extends State<TasksPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    margin: EdgeInsets.only(left: 20),
-                                    child: Text(docs[index]['title'],
-                                        style:
-                                            GoogleFonts.roboto(fontSize: 20))),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                    margin: EdgeInsets.only(left: 20),
-                                    child: Text(
-                                        DateFormat.yMd().add_jm().format(time)))
-                              ],
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  margin: EdgeInsets.only(left: 20),
+                                  child: Text(docs[index]['title'],
+                                      style: GoogleFonts.roboto(fontSize: 20))),
+                              SizedBox(
+                                height: 5,
                               ),
-                              
-                              //Edit Task
-                            Container( 
-                              child: Padding  (padding: const EdgeInsets.only(
-                          left: 120, bottom: 0, right: 0, top: 0),
-                          child: IconButton(
-                                  icon: Icon(
-                                    Icons.edit,
-                              ),
-                                  onPressed: () async {
-                                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => addTask(
-                                    title: docs[index]['title'],
-                                    description: docs[index]['description'],
-                                    time:docs[index]['time'],
-                                    
-                                  ),
-                              ),
-                                     );setState((){});                                        
-                                  },
-                              )),
-                                  ),                          
-                                                            
-                              //Delete Task
-                          Container( 
-                            child: Padding  (padding: const EdgeInsets.only(
-                          left: 0, bottom: 0, right: 0, top: 0),
+                              Container(
+                                  margin: EdgeInsets.only(left: 20),
+                                  child: Text(
+                                      DateFormat.yMd().add_jm().format(time)))
+                            ],
+                          ),
+
+                          //Edit Task
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 120, bottom: 0, right: 0, top: 0),
                               child: IconButton(
-                                  icon: Icon(
-                                    Icons.delete,
-                                  ),
-                                  onPressed: () async {
+                                icon: Icon(
+                                  Icons.edit,
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => addTask(
+                                        title: docs[index]['title'],
+                                        description: docs[index]['description'],
+                                        time: docs[index]['time'],
+                                      ),
+                                    ),
+                                  );
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                          ),
+
+                          //Delete Task
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 0, bottom: 0, right: 0, top: 0),
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.delete,
+                                ),
+                                onPressed: () async {
                                   //  FirebaseFirestore firestore = FirebaseFirestore.instance;
-                                    await docs[index].reference.delete();
-                                        setState((){});
-                                        
-                                  },
-                                  ),
-                          )),
+                                  await docs[index].reference.delete();
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -158,16 +165,15 @@ class _TasksPageState extends State<TasksPage> {
             }
           },
         ),
-        
       ),
       floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.add, color: Colors.white),
-              backgroundColor: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => addTask()));
-              },
-            ),
+        child: Icon(Icons.add, color: Colors.white),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => addTask()));
+        },
+      ),
     );
   }
 }
