@@ -121,11 +121,6 @@ class _addTaskState extends State<addTask> {
     );
   
   }
-  
-  
-
-
-
   @override  
     Widget build(BuildContext context) {
       AwesomeNotifications().initialize(
