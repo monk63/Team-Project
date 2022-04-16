@@ -30,42 +30,21 @@ body: Center(
           children: [
             // Text('You have logged in Successfuly'),
             // SizedBox(height: 50),
-            Spacer(),
+            const Spacer(),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text("Log out"),
+              leading: const Icon(Icons.logout),
+              title: const Text("Log out"),
               onTap: ()async{
 
                     await _signOut();
                     if (_firebaseAuth.currentUser == null) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(builder: (context) => const LoginScreen()),
                       );
                     }
               },
             ),
-            // Container(
-            //   height: 60,
-            //   width: 150,
-
-            //   //logout button
-            //   child: ElevatedButton(
-            //       clipBehavior: Clip.hardEdge,
-            //       child: Center(
-            //         child: Text('Log out'),
-            //       ),
-            //       onPressed: () async {
-            //         await _signOut();
-            //         if (_firebaseAuth.currentUser == null) {
-            //           Navigator.push(
-            //             context,
-            //             MaterialPageRoute(builder: (context) => LoginScreen()),
-            //           );
-            //         }
-            //       },
-            //   ),
-            // ),
           ],
         ),
       ),
