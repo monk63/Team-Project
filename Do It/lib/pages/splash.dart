@@ -44,9 +44,9 @@ class StartState extends State<SplashScreen> {
         children: [
           Container(
             decoration: BoxDecoration(
-                color: new Color(0xffF5591F),
+                color: Color.fromARGB(255, 14, 67, 167),
                 gradient: LinearGradient(
-                    colors: [(new Color(0xffF5591F)), new Color(0xffF2861E)],
+                    colors: [(Color.fromARGB(255, 30, 19, 184)), Color.fromARGB(255, 22, 62, 192)],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter)),
           ),

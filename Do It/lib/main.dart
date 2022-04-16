@@ -1,11 +1,8 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'pages/Login_Screen.dart';
 import 'pages/splash.dart';
 import '../Component/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 //source: https://github.com/dragneel2074/login_logout_app/blob/master/lib/Screens/Home_Screen.dart
 // Source : https://resocoder.com/2021/08/13/flutter-awesome-notifications-create-local-notifications-with-ease/
@@ -52,6 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => 
   ChangeNotifierProvider(
      create: (context) => GoogleSignInProvider(),
+     
      child:  MaterialApp(
        debugShowCheckedModeBanner: false,
       home: SplashScreen(),

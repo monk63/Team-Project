@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -123,6 +125,7 @@ class _TasksPageState extends State<TasksPage> {
                                   Icons.edit,
                                 ),
                                 onPressed: () async {
+                                  
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -150,8 +153,55 @@ class _TasksPageState extends State<TasksPage> {
                                 ),
                                 onPressed: () async {
                                   //  FirebaseFirestore firestore = FirebaseFirestore.instance;
-                                  await docs[index].reference.delete();
+                                  // await docs[index].reference.delete();
+                                  // setState(() {});
+                                  ////////////////
+                      //call delete
+
+                  // set up the buttons
+                  Widget cancelButton = FlatButton(
+                    child: const Text("Cancel"),
+                    onPressed: () {
+                      Navigator.of(context, rootNavigator: true).pop('dialog');
+                    },
+                  );
+                  Widget continueButton = FlatButton(
+                    child: const Text("Yes, Delete Task Forever"),
+                    onPressed: () async {
+                       await docs[index].reference.delete();
                                   setState(() {});
+                      Navigator.of(context, rootNavigator: true).pop('dialog');
+                      Fluttertoast.showToast(
+                          msg: "Task Deleted",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Color.fromARGB(255, 95, 55, 43),
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                    },
+                  );
+
+                  // set up the AlertDialog
+                  AlertDialog alert = AlertDialog(
+                    title: const Text("Confirm Permanent Deletion"),
+                    content: const Text(
+                        "You are about to perform an action that cannot be undone..."),
+                    actions: [
+                      cancelButton,
+                      continueButton,
+                    ],
+                  );
+                  // show the dialog
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return alert;
+                    },
+                  );
+
+
+
                                 },
                               ),
                             ),
