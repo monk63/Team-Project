@@ -37,51 +37,51 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
    ////
-     body: SingleChildScrollView(
-       child:  Column(
-         children: <Widget>[
-           FutureBuilder(
-           //  future: Provider.of(context.auth.getCurrentUID()),
-             builder: (context, snapshot){
-               if (snapshot.connectionState == ConnectionState.done){
-                 return displayUserInformation(context, snapshot);
-               }else{
-                 return CircularProgressIndicator();
-               }
-             },
+  //    body: SingleChildScrollView(
+  //      child:  Column(
+  //        children: <Widget>[
+  //          FutureBuilder(
+  //           future: Provider.of(context.auth.getCurrentUID()),
+  //            builder: (context, snapshot){
+  //              if (snapshot.connectionState == ConnectionState.done){
+  //                return displayUserInformation(context, snapshot);
+  //              }else{
+  //                return CircularProgressIndicator();
+  //              }
+  //            },
 
-           ),
-         ],
+  //          ),
+  //        ],
        
-     ),
-     ),
-    );
-  }
+  //    ),
+  //    ),
+  //   );
+  // }
 
-   Widget displayUserInformation(context, snapshot) {
-    final user = snapshot.data;
+  //  Widget displayUserInformation(context, snapshot) {
+  //   final user = snapshot.data;
 
-    return Column(
-      children: <Widget>[
-        // Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: Text(
-        //     "Name: ${user.displayName ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
-        // ),
+  //   return Column(
+  //     children: <Widget>[
+  //       // Padding(
+  //       //   padding: const EdgeInsets.all(8.0),
+  //       //   child: Text(
+  //       //     "Name: ${user.displayName ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
+  //       // ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Email: ${user.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
-        ),
+  //       Padding(
+  //         padding: const EdgeInsets.all(8.0),
+  //         child: Text("Email: ${user.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
+  //       ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
-              user.metadata.creationTime)}", style: TextStyle(fontSize: 20),),
-        ),
+  //       Padding(
+  //         padding: const EdgeInsets.all(8.0),
+  //         child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
+  //             user.metadata.creationTime)}", style: TextStyle(fontSize: 20),),
+  //       ),
 
-        //showSignOut(context, user.isAnonymous),
-      ],
+  //       //showSignOut(context, user.isAnonymous),
+  //     ],
     );
   }
 
