@@ -156,6 +156,8 @@ class _addTaskState extends State<addTask> {
               SizedBox(height: 10),
               Container(
                 child: TextField(
+                  maxLines: 10,
+                  minLines: 3,
                   controller: descriptionController,
                   decoration: InputDecoration(
                       labelText: 'Enter Description',

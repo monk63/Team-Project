@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:week_9/pages/settings_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -9,6 +11,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  final _auth = FirebaseAuth.instance;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,56 +36,27 @@ class _ProfilePageState extends State<ProfilePage> {
           )
         ],
       ),
-   ////
-  //    body: SingleChildScrollView(
-  //      child:  Column(
-  //        children: <Widget>[
-  //          FutureBuilder(
-  //           future: Provider.of(context.auth.getCurrentUID()),
-  //            builder: (context, snapshot){
-  //              if (snapshot.connectionState == ConnectionState.done){
-  //                return displayUserInformation(context, snapshot);
-  //              }else{
-  //                return CircularProgressIndicator();
-  //              }
-  //            },
 
-  //          ),
-  //        ],
-       
-  //    ),
-  //    ),
-  //   );
-  // }
+     body: SingleChildScrollView(
+       child: Column(
+      children: <Widget>[
+      
 
-  //  Widget displayUserInformation(context, snapshot) {
-  //   final user = snapshot.data;
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Email: ${_auth.currentUser!.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
+        ),
 
-  //   return Column(
-  //     children: <Widget>[
-  //       // Padding(
-  //       //   padding: const EdgeInsets.all(8.0),
-  //       //   child: Text(
-  //       //     "Name: ${user.displayName ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
-  //       // ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
+              _auth.currentUser!.metadata.creationTime!)}", style: TextStyle(fontSize: 20),),
+        ),
 
-  //       Padding(
-  //         padding: const EdgeInsets.all(8.0),
-  //         child: Text("Email: ${user.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
-  //       ),
-
-  //       Padding(
-  //         padding: const EdgeInsets.all(8.0),
-  //         child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
-  //             user.metadata.creationTime)}", style: TextStyle(fontSize: 20),),
-  //       ),
-
-  //       //showSignOut(context, user.isAnonymous),
-  //     ],
+        
+      ],
+    ),
+     ),
     );
   }
-
-
-
-
 }
