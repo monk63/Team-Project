@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:week_9/pages/add_task.dart';
-import 'package:week_9/pages/new_goal_page.dart';
+import 'package:week_9/pages/TransfterData.dart';
 
 class GoalsPage extends StatefulWidget {
   const GoalsPage({ Key? key }) : super(key: key);
@@ -32,7 +32,7 @@ class _GoalsPageState extends State<GoalsPage> {
       onPressed: () => {
         Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context)=>NewGoalPage() ),
+                MaterialPageRoute(builder: (context)=>TransfterData() ),
               ) 
       }, 
       splashColor: Color.fromARGB(255, 50, 21, 153),
