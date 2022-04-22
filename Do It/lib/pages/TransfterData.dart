@@ -93,7 +93,7 @@ class TransfterData extends StatefulWidget {
               child: TextField(
                   controller: goal_nameController,
                   autocorrect: true,
-                  decoration: InputDecoration(hintText: 'Enter Name Here'),
+                  decoration: InputDecoration(hintText: 'Enter Goal Here'),
                 )
               ),
  
@@ -103,7 +103,7 @@ class TransfterData extends StatefulWidget {
               child: TextField(
                   controller: goal_descriptionController,
                   autocorrect: true,
-                  decoration: InputDecoration(hintText: 'Enter Email Here'),
+                  decoration: InputDecoration(hintText: 'Enter goal description Here'),
                 )
               ),
  
