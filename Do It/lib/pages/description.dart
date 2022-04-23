@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Description extends StatelessWidget {
   final String title, description;
@@ -9,7 +8,7 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Description')),
+      appBar: AppBar(title: const Text('Description')),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
