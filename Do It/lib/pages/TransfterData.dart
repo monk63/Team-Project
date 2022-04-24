@@ -1,133 +1,145 @@
-
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'goals_screen.dart';
 
 
 
+class addGoal extends StatelessWidget {
+  TextEditingController title = TextEditingController();
 
-class TransfterData extends StatefulWidget {
+  final fb = FirebaseDatabase.instance;
 
-  TransfterDataWidget createState() => TransfterDataWidget();
-  
-  }
-  class TransfterDataWidget extends State {
-  // Getting value from TextField widget.
-  final goal_nameController = TextEditingController();
-  final goal_descriptionController = TextEditingController();
- 
+  @override
+  Widget build(BuildContext context) {
+    final ref = fb.ref().child('todos');
 
-    // Boolean variable for CircularProgressIndicator.
-  bool visible = false ;
-
-  Future webCall() async{
-
-    // Showing CircularProgressIndicator using State.
-    setState(() {
-     visible = true ; 
-    });
-
-    // Getting value from Controller
-    String goal_name = goal_nameController.text;
-    String goal_description = goal_descriptionController.text;
-
-    // API URL
-    var url =Uri.parse('https://dicksonakubiaussd.000webhostapp.com/public_html/submit_data.php') ;
-
-    // Store all data with Param Name.
-    var data = {'goal_name': goal_name, 'goal_description': goal_description};
-
-    // Starting Web Call with data.
-    var response = await http.post(url, body: json.encode(data));
-
-    // Getting Server response into variable.
-    var message = jsonDecode(response.body);
-
-    // If Web call Success than Hide the CircularProgressIndicator.
-    if(response.statusCode == 200){
-      setState(() {
-       visible = false; 
-      });
-    }
-
-    // Showing Alert Dialog with Response JSON.
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: new Text(message),
-          actions: <Widget>[
-            FlatButton(
-              child: new Text("OK"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Add A Goal"),
+        backgroundColor: Colors.indigo[900],
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(border: Border.all()),
+              borderRadius: BorderRadius.circular(10),
+              child: TextField(
+                controller: title,
+                decoration: InputDecoration(
+                  hintText: 'Type Goal Name',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(border: Border.all()),
+              borderRadius: BorderRadius.circular(10),
+              child: TextField(
+                controller: title,
+                decoration: InputDecoration(
+                  hintText: 'Describe This Goal',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              color: Colors.indigo[900],
               onPressed: () {
-                Navigator.of(context).pop();
+                ref
+                    .push()
+                    .set(
+                      title.text,
+                    )
+                    .asStream();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => GoalsPage()));
               },
+              child: Text(
+                "Add Goal!!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
             ),
           ],
-        );
-      },
+        ),
+      ),
     );
-
   }
-    Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: 
-      Text('New Goal'),
-      automaticallyImplyLeading: false,
+}
 
-  ),
-        body: SingleChildScrollView(
+
+
+
+//   }
+//     Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: 
+//       Text('New Goal'),
+//       automaticallyImplyLeading: false,
+
+//   ),
+//         body: SingleChildScrollView(
           
-          child: Center(
-          child: Column(
-            children: <Widget>[
+//           child: Center(
+//           child: Column(
+//             children: <Widget>[
 
-              const Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text('Fill All Information in Form', 
-                       style: TextStyle(fontSize: 22))),
+//               const Padding(
+//                 padding: const EdgeInsets.all(12.0),
+//                 child: Text('Fill All Information in Form', 
+//                        style: TextStyle(fontSize: 22))),
 
-              Container(
-              width: 280,
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                  controller: goal_nameController,
-                  autocorrect: true,
-                  decoration: InputDecoration(hintText: 'Enter Goal Here'),
-                )
-              ),
+//               Container(
+//               width: 280,
+//               padding: EdgeInsets.all(10.0),
+//               child: TextField(
+//                   controller: goal_nameController,
+//                   autocorrect: true,
+//                   decoration: InputDecoration(hintText: 'Enter Goal Here'),
+//                 )
+//               ),
  
-              Container(
-              width: 280,
-              padding: EdgeInsets.all(10.0),
-              child: TextField(
-                  controller: goal_descriptionController,
-                  autocorrect: true,
-                  decoration: InputDecoration(hintText: 'Enter goal description Here'),
-                )
-              ),
+//               Container(
+//               width: 280,
+//               padding: EdgeInsets.all(10.0),
+//               child: TextField(
+//                   controller: goal_descriptionController,
+//                   autocorrect: true,
+//                   decoration: InputDecoration(hintText: 'Enter goal description Here'),
+//                 )
+//               ),
  
             
-              RaisedButton(
-                onPressed: webCall,
-                color: Colors.pink,
-                textColor: Colors.white,
-                padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-                child: Text('Click Here To Submit Data To Server'),
-              ),
+//               RaisedButton(
+//                 onPressed: webCall,
+//                 color: Colors.pink,
+//                 textColor: Colors.white,
+//                 padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+//                 child: Text('Click Here To Submit Data To Server'),
+//               ),
 
-              Visibility(
-                visible: visible, 
-                child: Container(
-                  margin: EdgeInsets.only(bottom: 30),
-                  child: CircularProgressIndicator()
-                  )
-                ),
+//               Visibility(
+//                 visible: visible, 
+//                 child: Container(
+//                   margin: EdgeInsets.only(bottom: 30),
+//                   child: CircularProgressIndicator()
+//                   )
+//                 ),
 
-            ],
-          ),
-        )));
-  }
+//             ],
+//           ),
+//         )));
+//   }
 
 
-}
+// }
