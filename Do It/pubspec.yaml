@@ -53,6 +53,7 @@ dependencies:
   flutter_sms: ^2.3.2
   carbon_icons: ^0.0.1+2
   url_launcher: ^6.1.0
+  firebase_database: ^9.0.12
 
 flutter_app_name:
   name: "Do It"

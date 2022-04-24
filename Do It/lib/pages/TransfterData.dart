@@ -26,8 +26,9 @@ class addGoal extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(border: Border.all()),
-              borderRadius: BorderRadius.circular(10),
+              
               child: TextField(
+             
                 controller: title,
                 decoration: InputDecoration(
                   hintText: 'Type Goal Name',
@@ -39,7 +40,7 @@ class addGoal extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(border: Border.all()),
-              borderRadius: BorderRadius.circular(10),
+              
               child: TextField(
                 controller: title,
                 decoration: InputDecoration(

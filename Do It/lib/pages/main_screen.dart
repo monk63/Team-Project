@@ -39,7 +39,7 @@ class sec extends StatefulWidget {
 
 class _secState extends State<sec> {
   List pages = [
-    const GoalsPage(),
+    GoalsPage(),
     const TasksPage(),
     const RemindersPage(),
     const ProfilePage(),

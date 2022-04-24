@@ -10,69 +10,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class _GoalsPageState extends State<GoalsPage> {
-  @override
-  Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return MaterialApp(
-      title: "Goals",
-      theme: ThemeData(
-        primaryColor: Colors.greenAccent[700],
-      ),
-      home: GoalsPage(),
-      debugShowCheckedModeBanner: false,
-    );
-=======
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Goals'),
-             backgroundColor: Color.fromARGB(255, 196, 104, 29), // appbar color.
-        foregroundColor: Colors.black, // appbar text color.
-          automaticallyImplyLeading: false,
-        ),
-        body: Center(
-            child: Column(
-              
-              mainAxisSize: MainAxisSize.max,
-              
-              children: [
-                MaterialButton(
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
-                  child: new Text("Create New Goal"),
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TransfterData()),
-                    )
-                  },
-                  splashColor: Color.fromARGB(255, 50, 21, 153),
-                ),
-                MaterialButton(
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
-                  child: new Text("See all Currents Goals"),
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ViewGoals()),
-                    )
-                  },
-                  splashColor: Color.fromARGB(255, 50, 21, 153),
-                ),
-              ],
-            )));
->>>>>>> 31dc199263032c66284f67f203a863f078570494
-  }
-}
 
 class GoalsPage extends StatefulWidget {
   @override
-  _GoalsPageState createState() => _GoalsPageState();
+
+  State<GoalsPage> createState() => _GoalsPageState();
 }
 
-class _GoalsPageState extends State<_GoalsPage> {
+class _GoalsPageState extends State <GoalsPage> {
   final fb = FirebaseDatabase.instance;
   @override
   Widget build(BuildContext context) {
@@ -143,3 +90,4 @@ class _GoalsPageState extends State<_GoalsPage> {
     );
   }
 }
+
