@@ -50,6 +50,7 @@ dependencies:
   firebase_messaging: ^11.2.12
   notifications: ^2.0.1
   awesome_notifications: ^0.6.21
+  flutter_sms: ^2.3.2
 
 flutter_app_name:
   name: "Do It"
@@ -65,7 +66,6 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_sms: ^2.1.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
