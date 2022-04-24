@@ -20,11 +20,15 @@ class _GoalsPageState extends State<GoalsPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Goals'),
+             backgroundColor: Color.fromARGB(255, 196, 104, 29), // appbar color.
+        foregroundColor: Colors.black, // appbar text color.
           automaticallyImplyLeading: false,
         ),
         body: Center(
             child: Column(
+              
               mainAxisSize: MainAxisSize.max,
+              
               children: [
                 MaterialButton(
                   color: Theme.of(context).primaryColor,

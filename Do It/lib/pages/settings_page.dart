@@ -20,16 +20,14 @@ class SettingsPage extends StatelessWidget{
   
   return Scaffold(
     appBar: AppBar(
-      title: Text('Settings')
+      title: Text('Settings'),
+         backgroundColor: Color.fromARGB(255, 196, 104, 29), // appbar color.
+        foregroundColor: Colors.black, // appbar text color.
   ),
 body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-
-          //Login message
           children: [
-            // Text('You have logged in Successfuly'),
-            // SizedBox(height: 50),
             const Spacer(),
             ListTile(
               leading: const Icon(Icons.logout),
