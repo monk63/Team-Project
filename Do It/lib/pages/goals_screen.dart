@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 class _GoalsPageState extends State<GoalsPage> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return MaterialApp(
       title: "Goals",
       theme: ThemeData(
@@ -22,6 +23,47 @@ class _GoalsPageState extends State<GoalsPage> {
       home: GoalsPage(),
       debugShowCheckedModeBanner: false,
     );
+=======
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Goals'),
+             backgroundColor: Color.fromARGB(255, 196, 104, 29), // appbar color.
+        foregroundColor: Colors.black, // appbar text color.
+          automaticallyImplyLeading: false,
+        ),
+        body: Center(
+            child: Column(
+              
+              mainAxisSize: MainAxisSize.max,
+              
+              children: [
+                MaterialButton(
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  child: new Text("Create New Goal"),
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TransfterData()),
+                    )
+                  },
+                  splashColor: Color.fromARGB(255, 50, 21, 153),
+                ),
+                MaterialButton(
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  child: new Text("See all Currents Goals"),
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ViewGoals()),
+                    )
+                  },
+                  splashColor: Color.fromARGB(255, 50, 21, 153),
+                ),
+              ],
+            )));
+>>>>>>> 31dc199263032c66284f67f203a863f078570494
   }
 }
 

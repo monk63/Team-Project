@@ -12,7 +12,8 @@ class addTask extends StatefulWidget {
   String? title;
   String? description;
   String? time;
-addTask({ Key? key, this.title, this.description, this.time }) : super(key: key);
+  addTask({Key? key, this.title, this.description, this.time})
+      : super(key: key);
   @override
   State<addTask> createState() => _addTaskState();
 }
@@ -20,7 +21,6 @@ addTask({ Key? key, this.title, this.description, this.time }) : super(key: key)
 class _addTaskState extends State<addTask> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-
 
   addtasktofirebase() async {
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -37,16 +37,16 @@ class _addTaskState extends State<addTask> {
       'description': descriptionController.text,
       'time': time.toIso8601String(),
     });
-     Fluttertoast.showToast(
+    Fluttertoast.showToast(
         msg: "Task Has Been Created.",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
         backgroundColor: Color.fromARGB(255, 44, 31, 167),
         textColor: Colors.white,
-        fontSize: 16.0
-    );    
-  }  
+        fontSize: 16.0);
+  }
+
   editTask() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -70,17 +70,17 @@ class _addTaskState extends State<addTask> {
         timeInSecForIosWeb: 1,
         backgroundColor: Color.fromARGB(255, 44, 31, 167),
         textColor: Colors.white,
-        fontSize: 16.0
-    );    
-  }  
+        fontSize: 16.0);
+  }
+
   @override
   void initState() {
     super.initState();
-    if (widget.title != null && widget.description != null){
+    if (widget.title != null && widget.description != null) {
       titleController.text = widget.title!;
       descriptionController.text = widget.description!;
     }
-    
+
     //super.initState();
     AwesomeNotifications().isNotificationAllowed().then(
       (isAllowed) {
@@ -89,7 +89,8 @@ class _addTaskState extends State<addTask> {
             context: context,
             builder: (context) => AlertDialog(
               title: const Text('Allow Notifications'),
-              content: const Text('Our app would like to send you notifications'),
+              content:
+                  const Text('Our app would like to send you notifications'),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -119,11 +120,11 @@ class _addTaskState extends State<addTask> {
         }
       },
     );
-  
   }
-  @override  
-    Widget build(BuildContext context) {
-      AwesomeNotifications().initialize(
+
+  @override
+  Widget build(BuildContext context) {
+    AwesomeNotifications().initialize(
       'resource://drawable/splash',
       [
         NotificationChannel(
@@ -136,74 +137,76 @@ class _addTaskState extends State<addTask> {
         ),
       ],
     );
-      return Scaffold(
-        appBar: AppBar(
-      title: Text('New Task'),
-    automaticallyImplyLeading: false,
-   ),
-
-    body: Container(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Container(
-                child: TextField(
-                  controller: titleController,
-                  decoration: InputDecoration(
-                      labelText: 'Enter Title', border: OutlineInputBorder()),
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add New Task'),
+        backgroundColor: const Color.fromARGB(255, 196, 104, 29), // appbar color.
+        foregroundColor: Colors.black, // appbar text color.
+        automaticallyImplyLeading: false,
+      ),
+      body: Container(
+          color: const Color.fromARGB(255, 161, 104, 56),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Container(
+              child: TextField(
+                
+                controller: titleController,
+                decoration: const InputDecoration(
+                    labelText: 'Enter Title', border: OutlineInputBorder()),
+                    maxLength: 13,
+                    
               ),
-              SizedBox(height: 10),
-              Container(
-                child: TextField(
-                  maxLines: 10,
-                  minLines: 3,
-                  controller: descriptionController,
-                  decoration: InputDecoration(
-                      labelText: 'Enter Description',
-                      border: OutlineInputBorder()),
-                ),
+            ),
+            SizedBox(height: 10),
+            Container(
+              child: TextField(
+                maxLines: 10,
+                minLines: 3,
+                controller: descriptionController,
+                decoration: InputDecoration(
+                    labelText: 'Enter Description',
+                    border: OutlineInputBorder()),
               ),
-              SizedBox(height: 10),
-              Container(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor:
-                        MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
+            ),
+            SizedBox(height: 10),
+            Container(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
                         return Colors.purple.shade100;
                       return Theme.of(context).primaryColor;
-                      },
-                    ),
-                  ),
-                    child: Text(
-                      'Add Task',
-                      style: GoogleFonts.roboto(fontSize: 18),
-                    ),
-                    onPressed: ()async {
-                      if (widget.title != null && widget.description != null){
-                        
-                      editTask();
-                      } else {
-
-                        addtasktofirebase();
-                        await AwesomeNotifications().createNotification(
-            content: NotificationContent(
-                id: 10,
-                channelKey: 'basic_channel',
-                title: 'Do It',
-                body: 'Your task has been created successfully'));
-                        
-                      }
-                      Navigator.pop(context);
                     },
                   ),
                 ),
-            ],
-          ),
+                child: Text(
+                  'Add Task',
+                  style: GoogleFonts.roboto(fontSize: 18),
+                ),
+                onPressed: () async {
+                  if (widget.title != null && widget.description != null) {
+                    editTask();
+                  } else {
+                    addtasktofirebase();
+                    await AwesomeNotifications().createNotification(
+                        content: NotificationContent(
+                            id: 10,
+                            channelKey: 'basic_channel',
+                            title: 'Do It',
+                            body: 'Your task has been created successfully'));
+                  }
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ],
         ),
+      ),
     );
   }
 }

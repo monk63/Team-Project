@@ -38,14 +38,17 @@ class _TasksPageState extends State<TasksPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tasks'),
+        backgroundColor: Color.fromARGB(255, 219, 110, 20), // appbar color.
+        foregroundColor: Colors.black, // appbar text color.
         automaticallyImplyLeading: false,
-   
       ),
       body: Container(
+         color: Color.fromARGB(255, 199, 122, 59),
         padding: EdgeInsets.all(10),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: StreamBuilder<QuerySnapshot>(
+          
           stream: FirebaseFirestore.instance
               .collection('tasks')
               .doc(uid)
@@ -83,7 +86,7 @@ class _TasksPageState extends State<TasksPage> {
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 98, 104, 114),
+                          color: Color.fromARGB(255, 72, 106, 165),
                           borderRadius: BorderRadius.circular(10)),
                       height: 90,
                       child: Row(
@@ -117,7 +120,6 @@ class _TasksPageState extends State<TasksPage> {
                                   Icons.edit,
                                 ),
                                 onPressed: () async {
-                                  
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -146,50 +148,52 @@ class _TasksPageState extends State<TasksPage> {
                                 onPressed: () async {
                                   //call delete
 
-                  // set up the buttons
-                  Widget cancelButton = FlatButton(
-                    child: const Text("Cancel"),
-                    onPressed: () {
-                      Navigator.of(context, rootNavigator: true).pop('dialog');
-                    },
-                  );
-                  Widget continueButton = FlatButton(
-                    child: const Text("Yes, Delete Task Forever"),
-                    onPressed: () async {
-                       await docs[index].reference.delete();
-                                  setState(() {});
-                      Navigator.of(context, rootNavigator: true).pop('dialog');
-                      Fluttertoast.showToast(
-                          msg: "Task Deleted",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: Color.fromARGB(255, 95, 55, 43),
-                          textColor: Colors.white,
-                          fontSize: 16.0);
-                    },
-                  );
+                                  // set up the buttons
+                                  Widget cancelButton = FlatButton(
+                                    child: const Text("Cancel"),
+                                    onPressed: () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop('dialog');
+                                    },
+                                  );
+                                  Widget continueButton = FlatButton(
+                                    child:
+                                        const Text("Yes, Delete Task Forever"),
+                                    onPressed: () async {
+                                      await docs[index].reference.delete();
+                                      setState(() {});
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop('dialog');
+                                      Fluttertoast.showToast(
+                                          msg: "Task Deleted",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor:
+                                              Color.fromARGB(255, 95, 55, 43),
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    },
+                                  );
 
-                  // set up the AlertDialog
-                  AlertDialog alert = AlertDialog(
-                    title: const Text("Confirm Permanent Deletion"),
-                    content: const Text(
-                        "You are about to perform an action that cannot be undone..."),
-                    actions: [
-                      cancelButton,
-                      continueButton,
-                    ],
-                  );
-                  // show the dialog
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return alert;
-                    },
-                  );
-
-
-
+                                  // set up the AlertDialog
+                                  AlertDialog alert = AlertDialog(
+                                    title: const Text(
+                                        "Confirm Permanent Deletion"),
+                                    content: const Text(
+                                        "You are about to perform an action that cannot be undone..."),
+                                    actions: [
+                                      cancelButton,
+                                      continueButton,
+                                    ],
+                                  );
+                                  // show the dialog
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return alert;
+                                    },
+                                  );
                                 },
                               ),
                             ),
@@ -205,8 +209,8 @@ class _TasksPageState extends State<TasksPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add, color: Colors.white),
-        backgroundColor: Theme.of(context).primaryColor,
+        child: Icon(Icons.add, color: Color.fromARGB(255, 14, 17, 189)),
+        backgroundColor: Color.fromARGB(255, 196, 104, 29),
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => addTask()));

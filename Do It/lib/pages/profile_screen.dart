@@ -11,15 +11,16 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
   final _auth = FirebaseAuth.instance;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //appdar
       appBar: AppBar(
         title: const Text('Profile'),
+        backgroundColor: Color.fromARGB(255, 196, 104, 29), // appbar color.
+        foregroundColor: Colors.black, // appbar text color.
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
@@ -37,66 +38,68 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
 
-         body: Container(
-           decoration: const BoxDecoration(
-             gradient: LinearGradient(
-               begin: Alignment.topCenter,
-               end: Alignment.bottomCenter,
-               colors: [Color.fromARGB(255, 160, 45, 10), Color.fromARGB(255, 26, 22, 23)],
-             ),
-           ),
-           child: SizedBox(
-             width: double.maxFinite,
-            height: double.maxFinite,
-             child: Column(
-               crossAxisAlignment: CrossAxisAlignment.center,
-               mainAxisAlignment: MainAxisAlignment.center,
-               children:  [
-                 CircleAvatar(
-                   backgroundImage: AssetImage("assets/images/profile.png"),
-                   radius: 70.0,
-                 ),
-                 SizedBox(
-                   height: 10.0,
-                 ),
-                  Padding(
-         padding: const EdgeInsets.all(8.0),
-         child: Text("Email: ${_auth.currentUser!.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 160, 45, 10),
+              Color.fromARGB(255, 26, 22, 23)
+            ],
+          ),
         ),
-
-        Padding(
-         padding: const EdgeInsets.all(8.0),
-         child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
-             _auth.currentUser!.metadata.creationTime!)}", style: TextStyle(fontSize: 20),),
+        child: SizedBox(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage("assets/images/profile.png"),
+                radius: 70.0,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Email: ${_auth.currentUser!.email ?? 'Anonymous'}",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Created: ${DateFormat('MM/dd/yyyy').format(_auth.currentUser!.metadata.creationTime!)}",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
         ),
+      ),
 
-    
-           
-                 
-               ],
-             ),
-           ),
-         ),
+      //  body: SingleChildScrollView(
+      //    child: Column(
+      //   children: <Widget>[
 
-    //  body: SingleChildScrollView(
-    //    child: Column(
-    //   children: <Widget>[
-        
-    //      Padding(
-    //       padding: const EdgeInsets.all(8.0),
-    //       child: Text("Email: ${_auth.currentUser!.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
-    //     ),
+      //      Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text("Email: ${_auth.currentUser!.email ?? 'Anonymous'}", style: TextStyle(fontSize: 20),),
+      //     ),
 
-    //     Padding(
-    //       padding: const EdgeInsets.all(8.0),
-    //       child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
-    //           _auth.currentUser!.metadata.creationTime!)}", style: TextStyle(fontSize: 20),),
-    //     ),
+      //     Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text("Created: ${DateFormat('MM/dd/yyyy').format(
+      //           _auth.currentUser!.metadata.creationTime!)}", style: TextStyle(fontSize: 20),),
+      //     ),
 
-        
-    //   ],
-    // ),
-    //  ),
+      //   ],
+      // ),
+      //  ),
     );
   }
 }
