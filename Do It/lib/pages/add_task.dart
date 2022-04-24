@@ -38,7 +38,7 @@ class _addTaskState extends State<addTask> {
       'time': time.toIso8601String(),
     });
      Fluttertoast.showToast(
-        msg: "Task Has Been Created",
+        msg: "Task Has Been Created.",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
