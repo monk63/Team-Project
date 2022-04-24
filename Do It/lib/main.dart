@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'pages/splash.dart';
 import '../Component/google_sign_in.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 //source: https://github.com/dragneel2074/login_logout_app/blob/master/lib/Screens/Home_Screen.dart
 // Source : https://resocoder.com/2021/08/13/flutter-awesome-notifications-create-local-notifications-with-ease/
 
@@ -14,7 +16,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("Handling a background message: ${message.messageId}");
 }                                       
 Future<void> main() async {
-
+    tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
