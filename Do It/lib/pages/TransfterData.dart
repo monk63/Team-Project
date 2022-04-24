@@ -28,14 +28,14 @@ class TransfterData extends StatefulWidget {
     });
 
     // Getting value from Controller
-    String goal = goal_nameController.text;
-    String description = goal_descriptionController.text;
+    String goal_name = goal_nameController.text;
+    String goal_description = goal_descriptionController.text;
 
     // API URL
     var url =Uri.parse('https://dicksonakubiaussd.000webhostapp.com/public_html/submit_data.php') ;
 
     // Store all data with Param Name.
-    var data = {'goal': goal, 'description': description};
+    var data = {'goal': goal_name, 'description': goal_description};
 
     // Starting Web Call with data.
     var response = await http.post(url, body: json.encode(data));

@@ -4,9 +4,38 @@ import 'package:week_9/pages/reminders_screen.dart';
 import 'package:week_9/pages/tasks_screen.dart';
 import 'package:week_9/pages/profile_screen.dart';
 
+import 'editGoal.dart';
+import 'oneGoal.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget{
+
+  const MyApp({Key? key}): super(key:key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      
+      //home: MyStatefulWidget(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => sec(),
+        '/viewGoal': (context) => const ViewAGoal(),
+        '/updateGoal': (context) => const EditGoal()
+      },
+    );
+  }
+
+
+}
+
 class sec extends StatefulWidget {
   @override
   _secState createState() => _secState();
+  
+  
+
 }
 
 class _secState extends State<sec> {
