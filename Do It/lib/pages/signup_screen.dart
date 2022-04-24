@@ -21,7 +21,8 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       appBar: AppBar(
        title: const Text('Create A New Account'),
-        backgroundColor: Color.fromARGB(255, 196, 104, 29),
+       foregroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 196, 104, 29),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black,size: 30,),
@@ -41,10 +42,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     Container(
                       height: double.infinity,
                       width: double.infinity,
-                     color: Colors.grey[200],
+                     color: const Color.fromARGB(255, 196, 104, 29),
                       child: SingleChildScrollView(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 120),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
