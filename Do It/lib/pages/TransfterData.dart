@@ -35,7 +35,7 @@ class TransfterData extends StatefulWidget {
     var url =Uri.parse('https://dicksonakubiaussd.000webhostapp.com/public_html/submit_data.php') ;
 
     // Store all data with Param Name.
-    var data = {'goal': goal_name, 'description': goal_description};
+    var data = {'goal_name': goal_name, 'description': goal_description};
 
     // Starting Web Call with data.
     var response = await http.post(url, body: json.encode(data));

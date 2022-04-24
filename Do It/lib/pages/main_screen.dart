@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget{
       initialRoute: '/',
       routes: {
         '/': (context) => sec(),
+
         '/viewGoal': (context) => const ViewAGoal(),
         '/updateGoal': (context) => const EditGoal()
       },
