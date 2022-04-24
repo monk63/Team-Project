@@ -19,12 +19,12 @@ class LoginSignupButton extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
-              style: const TextStyle(fontSize: 20,color: Colors.red,),
+              style: const TextStyle(fontSize: 20,color: Color.fromARGB(255, 230, 226, 221),),
               
             ),
           ),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(const Color.fromARGB(115, 30, 16, 223)),
+            backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 34, 117, 185)),
           ),
         ),
       ),

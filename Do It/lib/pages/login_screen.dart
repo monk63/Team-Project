@@ -30,15 +30,15 @@ class _LoginScreenState extends State<LoginScreen> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasData) {
               return sec();
             } else if (snapshot.hasError) {
-              return Center(child: Text('Something is wrong!'));
+              return const Center(child: Text('Something is wrong!'));
             } else {
               return Scaffold(
                 body: isloading
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
                     : Form(
@@ -50,22 +50,22 @@ class _LoginScreenState extends State<LoginScreen> {
                               Container(
                                 height: double.infinity,
                                 width: double.infinity,
-                                color: Colors.grey[200],
+                                color: const Color.fromARGB(255, 196, 104, 29),
                                 child: SingleChildScrollView(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 25, vertical: 120),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(top: 50),
+                                        margin: const EdgeInsets.only(top: 50),
                                         child: Image.asset(
                                           "assets/images/splash.png",
                                           height: 90,
                                           width: 90,
                                         ),
                                       ),
-                                      Text(
+                                      const Text(
                                         "Sign In",
                                         style: TextStyle(
                                             fontSize: 50,
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 255, 42, 26, 190),
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      SizedBox(height: 30),
+                                      const SizedBox(height: 30),
                                       TextFormField(
                                         keyboardType:
                                             TextInputType.emailAddress,
@@ -89,14 +89,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                         decoration:
                                             kTextFieldDecoration.copyWith(
                                           hintText: 'Email',
-                                          prefixIcon: Icon(
+                                          prefixIcon: const Icon(
                                             Icons.email,
                                             color: Color.fromARGB(
                                                 255, 34, 44, 141),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 30),
+                                      const SizedBox(height: 30),
                                       TextFormField(
                                         obscureText: true,
                                         validator: (value) {
@@ -111,13 +111,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                         decoration:
                                             kTextFieldDecoration.copyWith(
                                                 hintText: 'Password',
-                                                prefixIcon: Icon(
+                                                prefixIcon: const Icon(
                                                   Icons.lock,
                                                   color: Color.fromARGB(
                                                       255, 50, 27, 153),
                                                 )),
                                       ),
-                                      SizedBox(height: 80),
+                                      const SizedBox(height: 80),
 
                                       LoginSignupButton(
                                         title: 'Login',
@@ -141,14 +141,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 context: context,
                                                 builder: (ctx) => AlertDialog(
                                                   title:
-                                                      Text("Ops! Login Failed"),
+                                                      const Text("Ops! Login Failed"),
                                                   content: Text('${e.message}'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () {
                                                         Navigator.of(ctx).pop();
                                                       },
-                                                      child: Text('Okay'),
+                                                      child: const Text('Okay'),
                                                     )
                                                   ],
                                                 ),
@@ -166,15 +166,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ElevatedButton.icon(
                                         style: ElevatedButton.styleFrom(
                                           primary:
-                                              Color.fromARGB(255, 34, 117, 185),
-                                          onPrimary: Color.fromARGB(
+                                              const Color.fromARGB(255, 34, 117, 185),
+                                          onPrimary: const Color.fromARGB(
                                               255, 238, 232, 232),
                                           maximumSize:
-                                              Size(double.infinity, 50),
+                                              const Size(double.infinity, 50),
                                         ),
-                                        icon: FaIcon(FontAwesomeIcons.google,
+                                        icon: const FaIcon(FontAwesomeIcons.google,
                                             color: Colors.red),
-                                        label: Text('Sign Up with Google'),
+                                        label: const Text('Sign Up with Google'),
                                         onPressed: () {
                                           final provider =
                                               Provider.of<GoogleSignInProvider>(
@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         },
                                       ),
 
-                                      SizedBox(height: 30),
+                                      const SizedBox(height: 30),
                                       GestureDetector(
                                         onTap: () {
                                           Navigator.of(context).push(
@@ -195,11 +195,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                           );
                                         },
                                         child: Row(
-                                          children: [
+                                          children: const [
                                             Text(
                                               "Don't have an Account ?",
                                               style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 20,fontWeight: FontWeight.bold,
                                                   color: Color.fromARGB(
                                                       221, 44, 53, 184)),
                                             ),
@@ -211,8 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 style: TextStyle(
                                                     fontSize: 21,
                                                     fontWeight: FontWeight.bold,
-                                                    color: Color.fromARGB(
-                                                        255, 182, 89, 3)),
+                                                    color: Color.fromARGB(255, 224, 219, 214)),
                                               ),
                                             )
                                           ],

@@ -4,12 +4,9 @@ import 'package:provider/provider.dart';
 import 'pages/splash.dart';
 import '../Component/google_sign_in.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-//source: https://github.com/dragneel2074/login_logout_app/blob/master/lib/Screens/Home_Screen.dart
-// Source : https://resocoder.com/2021/08/13/flutter-awesome-notifications-create-local-notifications-with-ease/
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
+
   await Firebase.initializeApp();
   print("Handling a background message: ${message.messageId}");
 }                                       

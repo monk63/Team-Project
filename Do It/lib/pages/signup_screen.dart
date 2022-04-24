@@ -20,7 +20,8 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[200],
+       title: const Text('Create A New Account'),
+        backgroundColor: Color.fromARGB(255, 196, 104, 29),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black,size: 30,),
@@ -89,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               textAlign: TextAlign.center,
                               decoration: kTextFieldDecoration.copyWith(
                                   hintText: 'Choose a Password',
-                                  prefixIcon: Icon(
+                                  prefixIcon: const Icon(
                                     Icons.lock,
                                     color: Colors.black,
                                   )),
@@ -107,10 +108,10 @@ class _SignupScreenState extends State<SignupScreen> {
                                         email: email, password: password);
 
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         backgroundColor: Colors.blueGrey,
                                         content: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: EdgeInsets.all(8.0),
                                           child: Text(
                                               'Sucessfully Register.You Can Login Now'),
                                         ),

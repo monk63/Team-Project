@@ -1,6 +1,4 @@
 // ignore_for_file: deprecated_member_use
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -41,13 +39,7 @@ class _TasksPageState extends State<TasksPage> {
       appBar: AppBar(
         title: Text('Tasks'),
         automaticallyImplyLeading: false,
-        //  actions: [
-        //       IconButton(
-        //           icon: Icon(Icons.logout),
-        //           onPressed: () async {
-        //             await FirebaseAuth.instance.signOut();
-        //           }),
-        //     ],
+   
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -61,7 +53,7 @@ class _TasksPageState extends State<TasksPage> {
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else {
@@ -89,9 +81,9 @@ class _TasksPageState extends State<TasksPage> {
                       );
                     },
                     child: Container(
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 43, 85, 163),
+                          color: Color.fromARGB(255, 98, 104, 114),
                           borderRadius: BorderRadius.circular(10)),
                       height: 90,
                       child: Row(
@@ -102,14 +94,14 @@ class _TasksPageState extends State<TasksPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                  margin: EdgeInsets.only(left: 20),
+                                  margin: const EdgeInsets.only(left: 20),
                                   child: Text(docs[index]['title'],
                                       style: GoogleFonts.roboto(fontSize: 20))),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Container(
-                                  margin: EdgeInsets.only(left: 20),
+                                  margin: const EdgeInsets.only(left: 20),
                                   child: Text(
                                       DateFormat.yMd().add_jm().format(time)))
                             ],
@@ -152,11 +144,7 @@ class _TasksPageState extends State<TasksPage> {
                                   Icons.delete,
                                 ),
                                 onPressed: () async {
-                                  //  FirebaseFirestore firestore = FirebaseFirestore.instance;
-                                  // await docs[index].reference.delete();
-                                  // setState(() {});
-                                  ////////////////
-                      //call delete
+                                  //call delete
 
                   // set up the buttons
                   Widget cancelButton = FlatButton(
