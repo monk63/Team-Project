@@ -33,6 +33,9 @@ class sec extends StatefulWidget {
 class _secState extends State<sec> {
   List pages = [
     const GoalsPage(),
+    const TasksPage(),
+    // const RemindersPage(),
+    const ProfilePage(),
   ];
   int currentIndex = 0;
   void onTap(int index) {
@@ -64,10 +67,10 @@ class _secState extends State<sec> {
             icon: Icon(Icons.task),
             label: 'Tasks',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.remember_me),
-            label: 'Reminder ',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.remember_me),
+          //   label: 'Reminder ',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_sharp),
             label: 'Profile',

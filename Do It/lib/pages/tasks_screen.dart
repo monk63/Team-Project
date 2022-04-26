@@ -147,7 +147,6 @@ class _TasksPageState extends State<TasksPage> {
                                 ),
                                 onPressed: () async {
                                   //call delete
-
                                   // set up the buttons
                                   Widget cancelButton = FlatButton(
                                     child: const Text("Cancel"),
