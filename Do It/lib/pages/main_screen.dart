@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:week_9/pages/goals_screen.dart';
 import 'package:week_9/pages/reminders_screen.dart';
 import 'package:week_9/pages/tasks_screen.dart';
@@ -9,40 +10,29 @@ import 'oneGoal.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget{
-
-  const MyApp({Key? key}): super(key:key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      
+    return GetMaterialApp(
       //home: MyStatefulWidget(),
       initialRoute: '/',
       routes: {
         '/': (context) => sec(),
-
       },
     );
   }
-
-
 }
 
 class sec extends StatefulWidget {
   @override
   _secState createState() => _secState();
-  
-  
-
 }
 
 class _secState extends State<sec> {
   List pages = [
-    GoalsPage(),
-    const TasksPage(),
-    const RemindersPage(),
-    const ProfilePage(),
+    const GoalsPage(),
   ];
   int currentIndex = 0;
   void onTap(int index) {

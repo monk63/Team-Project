@@ -1,93 +1,57 @@
 import 'dart:io';
-
+import 'package:extended_image/extended_image.dart';
+import 'package:get/get.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:week_9/Component/goal_button.dart';
 import 'package:week_9/pages/add_task.dart';
-import 'package:week_9/pages/TransfterData.dart';
+import 'package:week_9/pages/add_Goal.dart';
 import 'package:week_9/pages/viewALLGoal.dart';
-
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 
 class GoalsPage extends StatefulWidget {
-  @override
+  const GoalsPage({Key? key}) : super(key: key);
 
+  @override
   State<GoalsPage> createState() => _GoalsPageState();
 }
 
-class _GoalsPageState extends State <GoalsPage> {
-  final fb = FirebaseDatabase.instance;
+class _GoalsPageState extends State<GoalsPage> {
   @override
   Widget build(BuildContext context) {
-    final ref = fb.ref().child('Goals');
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigo[900],
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => addGoal(),
-            ),
-          );
-        },
-        child: Icon(
-          Icons.add,
-        ),
-      ),
-      appBar: AppBar(
-        title: Text(
-          'Goals',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        backgroundColor: Colors.indigo[900],
-      ),
-      body: FirebaseAnimatedList(
-        query: ref,
-        shrinkWrap: true,
-        itemBuilder: (context, snapshot, animation, index) {
-          return GestureDetector(
-            onTap: () {},
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: Colors.white,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  tileColor: Colors.indigo[100],
-                  trailing: IconButton(
-                    icon: Icon(
-                      Icons.delete,
-                      color: Colors.red[900],
-                    ),
-                    onPressed: () {
-                      ref.child(snapshot.key!).remove();
-                    },
-                  ),
-                  title: Text(
-                    snapshot.value.toString(),
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+        body: Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                    text: const TextSpan(text: "Hello User", style: TextStyle(color: Colors.black, fontSize: 60, fontWeight: FontWeight.bold), children: [
+                  TextSpan(text: "\nAdd A goal to your Day", style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold))
+                ])),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 2.3,
                 ),
-              ),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const AddGoal(), transition: Transition.zoom, duration: const Duration(microseconds: 500));
+                  },
+                  child: const GoalButton(backgroundcolor: Colors.lightBlueAccent, text: "Add Goal", textColor: Colors.white),
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => ViewGoals(), transition: Transition.fade, duration: Duration(seconds: 1));
+                  },
+                  child: const GoalButton(backgroundcolor: Colors.white, text: "View All Goals", textColor: Colors.black),
+                )
+              ],
             ),
-          );
-        },
-      ),
-    );
+            decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage("assets/images/homeScreen.jpg")))));
   }
 }
-
