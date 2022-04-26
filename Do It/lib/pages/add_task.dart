@@ -140,23 +140,22 @@ class _addTaskState extends State<addTask> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add New Task'),
-        backgroundColor: const Color.fromARGB(255, 196, 104, 29), // appbar color.
+        backgroundColor:
+            const Color.fromARGB(255, 196, 104, 29), // appbar color.
         foregroundColor: Colors.black, // appbar text color.
         automaticallyImplyLeading: false,
       ),
       body: Container(
-          color: const Color.fromARGB(255, 161, 104, 56),
+        color: const Color.fromARGB(255, 161, 104, 56),
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Container(
               child: TextField(
-                
                 controller: titleController,
                 decoration: const InputDecoration(
                     labelText: 'Enter Title', border: OutlineInputBorder()),
-                    maxLength: 13,
-                    
+                maxLength: 13,
               ),
             ),
             SizedBox(height: 10),
@@ -194,11 +193,12 @@ class _addTaskState extends State<addTask> {
                   } else {
                     addtasktofirebase();
                     await AwesomeNotifications().createNotification(
-                        content: NotificationContent(
-                            id: 10,
-                            channelKey: 'basic_channel',
-                            title: 'Do It',
-                            body: 'Your task has been created successfully'));
+                      content: NotificationContent(
+                          id: 10,
+                          channelKey: 'basic_channel',
+                          title: 'Do It',
+                          body: 'Your task has been created successfully'),
+                    );
                   }
                   Navigator.pop(context);
                 },
