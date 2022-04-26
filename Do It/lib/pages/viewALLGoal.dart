@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -19,15 +21,47 @@ class _ViewGoalsState extends State<ViewGoals> {
 
   @override
   Widget build(BuildContext context) {
-    List myData = [
-      "try harder",
-      "try again"
-    ];
 
     List<String> recipients = [
       "0203595867",
       "0209535914"
     ];
+     Container(
+           child: IconButton(
+              padding: const EdgeInsets.only(right: 20, top: 60),
+              alignment: Alignment.topRight,
+                onPressed: () {
+                showDialog(
+                context: context,
+                builder: (context) {
+                return AlertDialog(
+                title: const Text('Are you sure you want to share this goal via SMS?'),
+                actions: <Widget>[
+                FlatButton(
+                child: Text('Yes'),
+                //call the delete method
+                onPressed: () {
+                _sendSMS("Type the goal and description" , recipients);
+
+                }),
+                FlatButton(
+                child: Text('No'),
+                onPressed: () {
+                ;
+                Navigator.of(context).pop();
+                }),
+                ],
+                );
+                });
+                },
+                icon: const Icon(Icons.share)),
+          );
+    List myData = [
+      "try harder",
+      "try again"
+    ];
+
+    
     final leftEditIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
       color: Colors.grey.withOpacity(0.3),
@@ -47,7 +81,12 @@ class _ViewGoalsState extends State<ViewGoals> {
       alignment: Alignment.centerRight,
     );
     return Scaffold(
-      body: Column(
+      
+      body:
+      
+      
+      Column(
+        
         children: [
           Container(
             padding: const EdgeInsets.only(left: 20, top: 60),
@@ -65,6 +104,7 @@ class _ViewGoalsState extends State<ViewGoals> {
             height: MediaQuery.of(context).size.height / 3.2,
             decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage("assets/images/alltaskimg.jpg"))),
           ),
+         
           Container(
             child: Row(
               children: [
@@ -75,6 +115,7 @@ class _ViewGoalsState extends State<ViewGoals> {
                 SizedBox(
                   width: 10,
                 ),
+                
                 Container(
                   child: Icon(
                     Icons.add,
@@ -155,36 +196,21 @@ class _ViewGoalsState extends State<ViewGoals> {
       ),
     );
   }
+
+void _sendSMS(String message,  List<String> recipients) async {
+
+  String _result = await sendSMS(message: message, recipients: recipients)
+      .catchError((onError){
+    print(onError);});
+  print(_result);
+
+}
+
 }
 //
 //
-// IconButton(
-// onPressed: () {
-// showDialog(
-// context: context,
-// builder: (context) {
-// return AlertDialog(
-// title: Text('Are you sure you want to share this goal via SMS?'),
-// actions: <Widget>[
-// FlatButton(
-// child: Text('Yes'),
-// //call the delete method
-// onPressed: () {
-// _sendSMS("Type the goal and description" , recipients);
-//
-// }),
-// FlatButton(
-// child: Text('No'),
-// onPressed: () {
-// getgoalMethod();
-// Navigator.of(context).pop();
-// }),
-// ],
-// );
-// });
-// },
-// icon: Icon(Icons.share)),
-//
+
+
 //
 //
 //
@@ -223,14 +249,7 @@ class _ViewGoalsState extends State<ViewGoals> {
 //
 //
 //
-// void _sendSMS(String message,  List<String> recipients) async {
-//
-//   String _result = await sendSMS(message: message, recipients: recipients)
-//       .catchError((onError){
-//     print(onError);});
-//   print(_result);
-//
-// }
+
 //
 //
 //
