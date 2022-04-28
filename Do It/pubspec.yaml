@@ -63,8 +63,6 @@ dependencies:
 flutter_app_name:
   name: "Do It"
 
-  
-
 flutter_icons:
   image_path: "assets/images/splash.png"
   android: true

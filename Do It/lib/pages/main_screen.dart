@@ -8,7 +8,7 @@ import 'package:week_9/pages/profile_screen.dart';
 import 'editGoal.dart';
 import 'oneGoal.dart';
 
-void main() => runApp(const MyApp());
+ void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

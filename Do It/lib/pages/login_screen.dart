@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasData) {
-              return sec();
+              return MyApp();
             } else if (snapshot.hasError) {
               return const Center(child: Text('Something is wrong!'));
             } else {
